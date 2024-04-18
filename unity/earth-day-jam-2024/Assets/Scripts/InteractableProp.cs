@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,8 +15,10 @@ public class InteractableProp : MonoBehaviour
     public GameObject Model;
     
     private GameObject _player;
+    private PlayerAnim _playerAnim;
     private Transform _playerParent;
     private int _lastActionAxis;
+
 
     public enum InteractableState
     {
@@ -23,8 +26,15 @@ public class InteractableProp : MonoBehaviour
         PlayerNearby,
         Occupied
     };
+    
+    public enum PropType
+    {
+        SteeringWheel,
+        Fishing
+    };
 
     public InteractableState State = InteractableState.Idle;
+    public PropType type;
 
     CapsuleCollider _collider;
     // Start is called before the first frame update
@@ -33,7 +43,7 @@ public class InteractableProp : MonoBehaviour
         _collider = Model.GetComponent<CapsuleCollider>();
         InteractionTooltip.gameObject.SetActive(false);
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -49,6 +59,7 @@ public class InteractableProp : MonoBehaviour
                     _player.transform.SetParent(transform);
                     _player.GetComponent<PlayerController>().State = PlayerController.PlayerState.Immovable;
                     Debug.Log("Activated!");
+                    EnterEvent();
                     State = InteractableState.Occupied;
                 }
                 break;
@@ -59,13 +70,14 @@ public class InteractableProp : MonoBehaviour
                     _player.GetComponent<PlayerController>().State = PlayerController.PlayerState.Default;
                     _player.transform.SetParent(_playerParent);
                     Debug.Log("Exited!");
+                    ExitEvent();
                     State = InteractableState.Idle;
                 }
                 break;
         }
         _lastActionAxis = (int)Input.GetAxis("Action");
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (State == InteractableState.Occupied)
@@ -76,6 +88,7 @@ public class InteractableProp : MonoBehaviour
 
         State = InteractableState.PlayerNearby;
         _player = other.gameObject;
+        _playerAnim = _player.GetComponentInChildren<PlayerAnim>();
 
         InteractionTooltip.gameObject.SetActive(true);
         InteractionTooltip.transform.position = Camera.main.WorldToScreenPoint(transform.position);
@@ -112,5 +125,33 @@ public class InteractableProp : MonoBehaviour
         State = InteractableState.Idle;
         _player = null;
         InteractionTooltip.gameObject.SetActive(false);
+    }
+
+    private void EnterEvent()
+    {
+        switch (type)
+        {
+            case PropType.SteeringWheel:
+                _playerAnim.EnterSteering();
+                break;
+            case PropType.Fishing:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+    
+    private void ExitEvent()
+    {
+        switch (type)
+        {
+            case PropType.SteeringWheel:
+                _playerAnim.ExitSteering();
+                break;
+            case PropType.Fishing:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 }

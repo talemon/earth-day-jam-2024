@@ -1,24 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PlayerAnim : MonoBehaviour
 {
-    public PlayerController playerController;
-    private Animator _animator;
-
+    public Animator animator;
     private static readonly int Speed = Animator.StringToHash("Speed");
+    private static readonly int EnterSteeringAnim = Animator.StringToHash("EnterSteering");
+    private static readonly int ExitSteeringAnim= Animator.StringToHash("ExitSteering");
 
     // Start is called before the first frame update
     void Start()
     {
-        _animator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (playerController.State != PlayerController.PlayerState.Immovable)
-            _animator.SetFloat(Speed, Input.GetAxis("Vertical"));
+        animator.SetFloat(Speed, Math.Abs(Input.GetAxis("Vertical")));
+    }
+
+    public void EnterSteering()
+    {
+        animator.SetTrigger(EnterSteeringAnim);
+    }
+
+    public void ExitSteering()
+    {
+        animator.SetTrigger(ExitSteeringAnim);
     }
 }
