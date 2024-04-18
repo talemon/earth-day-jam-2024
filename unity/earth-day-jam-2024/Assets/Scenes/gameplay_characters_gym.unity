@@ -593,6 +593,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1533524610 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5885299619387676181, guid: 02f2ce2a88a987140898ff692dea29f5, type: 3}
+  m_PrefabInstance: {fileID: 2118236581780107182}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1798312640
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,6 +684,14 @@ PrefabInstance:
       propertyPath: Ship
       value: 
       objectReference: {fileID: 747016263}
+    - target: {fileID: 3433203473095351569, guid: 02f2ce2a88a987140898ff692dea29f5, type: 3}
+      propertyPath: ExitPrompt
+      value: 
+      objectReference: {fileID: 1533524610}
+    - target: {fileID: 5130661125711523510, guid: 02f2ce2a88a987140898ff692dea29f5, type: 3}
+      propertyPath: m_Name
+      value: ExitImage
+      objectReference: {fileID: 0}
     - target: {fileID: 6690691632356555044, guid: 02f2ce2a88a987140898ff692dea29f5, type: 3}
       propertyPath: m_Name
       value: SteeringWheel

@@ -7,10 +7,14 @@ public class InteractableProp : MonoBehaviour
 {
     public Image InteractionTooltip;
     public Text InteractionTooltipText;
+
+    public Image ExitPrompt;
+
     public GameObject PlayerPlaceHolder;
     public GameObject Model;
     
     private GameObject _player;
+    private int _lastActionAxis;
 
     public enum InteractableState
     {
@@ -35,16 +39,27 @@ public class InteractableProp : MonoBehaviour
         switch (State)
         {
             case InteractableState.PlayerNearby:
-                if (Input.GetAxis("Action") > 0)
+                if (_lastActionAxis == 0 && Input.GetAxis("Action") > 0)
                 {
                     InteractionTooltip.gameObject.SetActive(false);
+                    ExitPrompt.gameObject.SetActive(true);
                     _player.transform.SetPositionAndRotation(PlayerPlaceHolder.transform.position, PlayerPlaceHolder.transform.rotation);
                     _player.GetComponent<PlayerController>().State = PlayerController.PlayerState.Immovable;
                     Debug.Log("Activated!");
                     State = InteractableState.Occupied;
                 }
                 break;
+            case InteractableState.Occupied:
+                if (_lastActionAxis == 0 && Input.GetAxis("Action") > 0)
+                {
+                    ExitPrompt.gameObject.SetActive(false);
+                    _player.GetComponent<PlayerController>().State = PlayerController.PlayerState.Default;
+                    Debug.Log("Exited!");
+                    State = InteractableState.Idle;
+                }
+                break;
         }
+        _lastActionAxis = (int)Input.GetAxis("Action");
     }
 
     private void OnTriggerEnter(Collider other)
