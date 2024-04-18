@@ -688,6 +688,14 @@ PrefabInstance:
       propertyPath: ExitPrompt
       value: 
       objectReference: {fileID: 1533524610}
+    - target: {fileID: 4658064892828369913, guid: 02f2ce2a88a987140898ff692dea29f5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 37.30005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658064892828369913, guid: 02f2ce2a88a987140898ff692dea29f5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.0999756
+      objectReference: {fileID: 0}
     - target: {fileID: 5130661125711523510, guid: 02f2ce2a88a987140898ff692dea29f5, type: 3}
       propertyPath: m_Name
       value: ExitImage
@@ -754,6 +762,18 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4988855366131343698, guid: 216b5aabf15c72c4aa61bca28810e791, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988855366131343698, guid: 216b5aabf15c72c4aa61bca28810e791, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988855366131343698, guid: 216b5aabf15c72c4aa61bca28810e791, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988855366131343698, guid: 216b5aabf15c72c4aa61bca28810e791, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.025677904
       objectReference: {fileID: 0}
@@ -792,6 +812,26 @@ PrefabInstance:
     - target: {fileID: 4988855366131343698, guid: 216b5aabf15c72c4aa61bca28810e791, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988855366131343698, guid: 216b5aabf15c72c4aa61bca28810e791, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7946732193568834531, guid: 216b5aabf15c72c4aa61bca28810e791, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7946732193568834531, guid: 216b5aabf15c72c4aa61bca28810e791, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7946732193568834531, guid: 216b5aabf15c72c4aa61bca28810e791, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7946732193568834531, guid: 216b5aabf15c72c4aa61bca28810e791, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
