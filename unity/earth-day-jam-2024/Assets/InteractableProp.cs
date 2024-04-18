@@ -14,6 +14,7 @@ public class InteractableProp : MonoBehaviour
     public GameObject Model;
     
     private GameObject _player;
+    private Transform _playerParent;
     private int _lastActionAxis;
 
     public enum InteractableState
@@ -44,6 +45,8 @@ public class InteractableProp : MonoBehaviour
                     InteractionTooltip.gameObject.SetActive(false);
                     ExitPrompt.gameObject.SetActive(true);
                     _player.transform.SetPositionAndRotation(PlayerPlaceHolder.transform.position, PlayerPlaceHolder.transform.rotation);
+                    _playerParent = _player.transform.parent;
+                    _player.transform.SetParent(transform);
                     _player.GetComponent<PlayerController>().State = PlayerController.PlayerState.Immovable;
                     Debug.Log("Activated!");
                     State = InteractableState.Occupied;
@@ -54,6 +57,7 @@ public class InteractableProp : MonoBehaviour
                 {
                     ExitPrompt.gameObject.SetActive(false);
                     _player.GetComponent<PlayerController>().State = PlayerController.PlayerState.Default;
+                    _player.transform.SetParent(_playerParent);
                     Debug.Log("Exited!");
                     State = InteractableState.Idle;
                 }
