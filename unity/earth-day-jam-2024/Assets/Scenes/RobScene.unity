@@ -194,6 +194,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4139379610259198291, guid: 873e2d3d1363c8f4ebfba7c1d265cad0, type: 3}
   m_PrefabInstance: {fileID: 154658017}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &179329922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 179329923}
+  m_Layer: 0
+  m_Name: DeckCamPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &179329923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179329922}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: -0.09, y: 3.113, z: -5.213}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6769749832006013276}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!4 &312976759 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1366476051378919206, guid: 4efa31f7fc4f5804399e83910cc34db0, type: 3}
@@ -1505,6 +1536,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8603978023746335138, guid: 3645d89811c0c254988cbcc20381ed66, type: 3}
   m_PrefabInstance: {fileID: 1782140944}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &2041026363 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4869850551360729680, guid: 18731df90bd4c9846ba929a09d89e5a8, type: 3}
+  m_PrefabInstance: {fileID: 6769749832006013275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2045900842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1910,6 +1946,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockoutBoat
       objectReference: {fileID: 0}
+    - target: {fileID: 5723473161701692656, guid: 18731df90bd4c9846ba929a09d89e5a8, type: 3}
+      propertyPath: Motor
+      value: 
+      objectReference: {fileID: 2041026363}
+    - target: {fileID: 5723473161701692656, guid: 18731df90bd4c9846ba929a09d89e5a8, type: 3}
+      propertyPath: DeckCamPos
+      value: 
+      objectReference: {fileID: 179329923}
     - target: {fileID: 8660412627765805425, guid: 18731df90bd4c9846ba929a09d89e5a8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.31
@@ -1960,9 +2004,17 @@ PrefabInstance:
       objectReference: {fileID: 1635779836}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8660412627765805425, guid: 18731df90bd4c9846ba929a09d89e5a8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 179329923}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18731df90bd4c9846ba929a09d89e5a8, type: 3}
+--- !u!4 &6769749832006013276 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8660412627765805425, guid: 18731df90bd4c9846ba929a09d89e5a8, type: 3}
+  m_PrefabInstance: {fileID: 6769749832006013275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6879183766701511657
 PrefabInstance:
   m_ObjectHideFlags: 0
