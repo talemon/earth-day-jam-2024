@@ -8,6 +8,7 @@ public class InteractableProp : MonoBehaviour
     public Image InteractionTooltip;
     public Text InteractionTooltipText;
     public GameObject PlayerPlaceHolder;
+    public GameObject Model;
     
     private GameObject _player;
 
@@ -24,7 +25,7 @@ public class InteractableProp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _collider = GetComponent<CapsuleCollider>();
+        _collider = Model.GetComponent<CapsuleCollider>();
         InteractionTooltip.gameObject.SetActive(false);
     }
 
@@ -68,7 +69,7 @@ public class InteractableProp : MonoBehaviour
         Vector3 buttonSizeScreenVec1 = Camera.main.WorldToScreenPoint(transform.position);
         Vector3 buttonSizeScreenVec2 = Camera.main.WorldToScreenPoint(transform.position + Camera.main.transform.right * buttonSizeWorld);
 
-        const float uiScaleCoeff = 1f; // how big the button is compared to collider size on screen
+        const float uiScaleCoeff = 1.2f; // how big the button is compared to collider size on screen
         float buttonSizeScreen = uiScaleCoeff * (buttonSizeScreenVec1 - buttonSizeScreenVec2).magnitude;
 
         Debug.Log($"button size screen {buttonSizeScreen}");
