@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAnim : MonoBehaviour
 {
+    public PlayerController playerController;
     private Animator _animator;
 
     private static readonly int Speed = Animator.StringToHash("Speed");
@@ -17,6 +18,7 @@ public class PlayerAnim : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        _animator.SetFloat(Speed, Input.GetAxis("Vertical"));
+        if (playerController.State != PlayerController.PlayerState.Immovable)
+            _animator.SetFloat(Speed, Input.GetAxis("Vertical"));
     }
 }
