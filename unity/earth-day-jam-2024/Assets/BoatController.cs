@@ -17,9 +17,6 @@ public class BoatController : MonoBehaviour
     protected ParticleSystem particleSystem;
     protected Camera camera;
 
-    // 
-    protected UnityEngine.Vector3 cameraVelocity;
-
     public void Awake()
     {
         particleSystem = GetComponentInChildren<ParticleSystem>();
@@ -31,7 +28,8 @@ public class BoatController : MonoBehaviour
 
     public void FixedUpdate()
     {
-        UnityEngine.Vector3 forceDirection = transform.forward;
+        UnityEngine.Vector3 localVelocity = rigidbody.velocity * UnityEngine.Vector3.Dot(rigidbody.velocity.normalized, transform.forward);
+
         int steerDirection = 0;
 
         if (Input.GetKey(KeyCode.A))
@@ -39,9 +37,12 @@ public class BoatController : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
             steerDirection = -1;
 
+        // Make sure we can't turn the boat whithout moving
+        if (localVelocity.magnitude < 0.5f)
+            steerDirection = 0;
+
         // Rotational force
         rigidbody.AddForceAtPosition(steerDirection * transform.right * SteerPower / 100f, motor.position);
-        // rigidbody.AddTorque(steerDirection * transform.right * SteerPower);
 
         // get forward vector
         UnityEngine.Vector3 forward = UnityEngine.Vector3.Scale(new UnityEngine.Vector3(1, 0, 1), transform.forward);
