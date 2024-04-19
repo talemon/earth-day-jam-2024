@@ -16,14 +16,13 @@ public class FishingRod : MonoBehaviour
     };
 
     public FishingRodState State;
+    public GameObject HookPlaceHolder;
 
     private int _lastShootAxis;
-    private Vector3 _hookDefaultPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        _hookDefaultPosition = Hook.transform.position;
     }
 
     // Update is called once per frame
@@ -47,7 +46,7 @@ public class FishingRod : MonoBehaviour
             if (_lastShootAxis == 0 && Input.GetAxis("Shoot") > 0)
             {
                 Aim.SetActive(false);
-                Hook.gameObject.transform.position = _hookDefaultPosition;
+                Hook.gameObject.transform.position = HookPlaceHolder.transform.position;
                 Hook.gameObject.SetActive(true);
                 Hook.Target = Aim.transform.position;
                 State = FishingRodState.Shooting;

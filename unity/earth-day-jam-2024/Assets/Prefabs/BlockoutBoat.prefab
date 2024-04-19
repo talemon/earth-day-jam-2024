@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4286884043186121549}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SteeringWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 227924660769453621}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: InvisibleWalls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,7 +522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 654222566610439100}
   - component: {fileID: 6627531493832769478}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftWall
   m_TagString: BoatWall
   m_Icon: {fileID: 0}
@@ -557,7 +557,7 @@ BoxCollider:
     m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 183
+    m_Bits: 1207
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -577,7 +577,7 @@ GameObject:
   - component: {fileID: 1041181382502864333}
   - component: {fileID: 8483769946627858293}
   - component: {fileID: 6818905061670966050}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FihingRodModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +662,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -764,7 +764,7 @@ GameObject:
   - component: {fileID: 7273095475914822681}
   - component: {fileID: 2845957471509201685}
   - component: {fileID: 8795722953933122475}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -883,7 +883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {x: 0, y: 0, z: 0}
   FlightTime: 0.5
-  CurveHeight: 20
+  CurveHeight: 10
   InFlight: 0
 --- !u!54 &8795722953933122475
 Rigidbody:
@@ -904,7 +904,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1280
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
@@ -1159,7 +1159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1167434508173472048}
   - component: {fileID: 4374316075567731550}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightWall
   m_TagString: BoatWall
   m_Icon: {fileID: 0}
@@ -1194,7 +1194,7 @@ BoxCollider:
     m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 183
+    m_Bits: 1207
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -1331,7 +1331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6457067264870860929}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Motor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1533,7 +1533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1864464534880705337}
   - component: {fileID: 1750297363569131751}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BackWall
   m_TagString: BoatWall
   m_Icon: {fileID: 0}
@@ -1568,7 +1568,7 @@ BoxCollider:
     m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 183
+    m_Bits: 1207
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -1623,7 +1623,7 @@ GameObject:
   - component: {fileID: 8567838603801951848}
   - component: {fileID: 6253381930307383575}
   - component: {fileID: 1650147389148766660}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BlockoutBoat
   m_TagString: Boat
   m_Icon: {fileID: 0}
@@ -4925,7 +4925,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3382
+  m_VersionIndex: 3388
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4985,7 +4985,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -5981,7 +5981,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4407880361559193039}
   - component: {fileID: 2759755633341714556}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FishingRod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6005,6 +6005,7 @@ Transform:
   - {fileID: 486852880244518000}
   - {fileID: 605350906755947774}
   - {fileID: 2906403872678047733}
+  - {fileID: 223671870741366097}
   m_Father: {fileID: 2350962945538393490}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &2759755633341714556
@@ -6023,6 +6024,7 @@ MonoBehaviour:
   Aim: {fileID: 6813754962701381062}
   Hook: {fileID: 2845957471509201685}
   State: 0
+  HookPlaceHolder: {fileID: 5690084787590659415}
 --- !u!1 &5566720765530767993
 GameObject:
   m_ObjectHideFlags: 0
@@ -6054,6 +6056,102 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5741955894263637650}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5690084787590659415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 223671870741366097}
+  - component: {fileID: 6243902348984862940}
+  - component: {fileID: 403010039656212816}
+  - component: {fileID: 1060930336517962022}
+  m_Layer: 9
+  m_Name: HookPlaceHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &223671870741366097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690084787590659415}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.013}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4407880361559193039}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &6243902348984862940
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690084787590659415}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &403010039656212816
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690084787590659415}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1060930336517962022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690084787590659415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b074a6edd91e7149bb4a526fff14c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6159999839467904052
 GameObject:
   m_ObjectHideFlags: 0
@@ -6066,7 +6164,7 @@ GameObject:
   - component: {fileID: 7547404962610610274}
   - component: {fileID: 3927916528985226486}
   - component: {fileID: 2063641814615983499}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerPlaceHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6831,7 +6929,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4316542899503149284}
   - component: {fileID: 1593638918708936608}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FrontWall
   m_TagString: BoatWall
   m_Icon: {fileID: 0}
@@ -6866,7 +6964,7 @@ BoxCollider:
     m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 183
+    m_Bits: 1207
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
