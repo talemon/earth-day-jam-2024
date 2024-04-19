@@ -13,8 +13,6 @@ public class BoatController : MonoBehaviour
     public float SteerPower = 50f;
     public float Power = 0.25f;
     public float MaxSpeed = 18f;
-
-    bool lerpToDeck, lerpToSky = false;
     bool motorOn = true;
 
     // Components
@@ -40,10 +38,22 @@ public class BoatController : MonoBehaviour
 
         if (motorOn)
         {
-            if (Input.GetKey(KeyCode.A))
-                steerDirection = 1;
-            if (Input.GetKey(KeyCode.D))
-                steerDirection = -1;
+            // Gotta make sure the turning inverts when going backwards like a real rudder
+            if (Input.GetAxis("Horizontal") < 0)
+            {
+                if (Input.GetAxis("Fire1") > 0 || Input.GetAxis("Vertical") > 0)
+                    steerDirection = 1;
+                else if (Input.GetAxis("Fire2") > 0 || Input.GetAxis("Vertical") < 0)
+                    steerDirection = -1;
+            } 
+
+            if (Input.GetAxis("Horizontal") > 0)
+            {
+                if (Input.GetAxis("Fire1") > 0 || Input.GetAxis("Vertical") > 0)
+                    steerDirection = -1;
+                else if (Input.GetAxis("Fire2") > 0 || Input.GetAxis("Vertical") < 0)
+                    steerDirection = 1;
+            }
         }
 
         // Make sure we can't turn the boat whithout moving
@@ -58,10 +68,10 @@ public class BoatController : MonoBehaviour
 
         if (motorOn)
         {
-            // forward/backward acceleration
-            if (Input.GetKey(KeyCode.W))
+            // // forward/backward acceleration with either analogue stick or triggers
+            if (Input.GetAxis("Fire1") > 0 || Input.GetAxis("Vertical") > 0)
                 rigidbody.AddForce(forward * (MaxSpeed * Power), ForceMode.Force);
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetAxis("Fire2") > 0 || Input.GetAxis("Vertical") < 0)
                 rigidbody.AddForce(forward * (-MaxSpeed * Power), ForceMode.Force);
         }
     }

@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
     public PlayerState State = PlayerState.Default;
 
     private Rigidbody _rigidBody;
-    private bool activated, actionAxisPressed = false;
 
     // Start is called before the first frame update
     void Start()
