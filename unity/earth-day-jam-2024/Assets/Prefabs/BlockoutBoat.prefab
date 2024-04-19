@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &494267060072978089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4286884043186121549}
+  m_Layer: 0
+  m_Name: SteeringWheel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4286884043186121549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494267060072978089}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1511491768851669653}
+  m_Father: {fileID: 2350962945538393490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &717283987566005264
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +145,7 @@ Transform:
   - {fileID: 8573380911081609169}
   - {fileID: 1755168719527725258}
   - {fileID: 9093019352134449442}
-  m_Father: {fileID: 2350962945538393490}
+  m_Father: {fileID: 4286884043186121549}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2183186220455153991
 MonoBehaviour:
@@ -656,7 +688,7 @@ Transform:
   - {fileID: 6596537496941034071}
   - {fileID: 227924660769453621}
   - {fileID: 4050341399097639869}
-  - {fileID: 1511491768851669653}
+  - {fileID: 4286884043186121549}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &295332298025771992
@@ -5237,3 +5269,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2543797605058971922}
+  steeringWheelAnimator: {fileID: 0}
