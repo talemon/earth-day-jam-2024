@@ -66,7 +66,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            _rigidBody.isKinematic = true;
             _rigidBody.velocity = Vector3.zero;
         }
     }

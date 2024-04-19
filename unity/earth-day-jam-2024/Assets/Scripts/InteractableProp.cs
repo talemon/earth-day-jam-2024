@@ -64,6 +64,7 @@ public class InteractableProp : MonoBehaviour
                 }
                 break;
             case InteractableState.Occupied:
+                _player.transform.SetPositionAndRotation(PlayerPlaceHolder.transform.position, PlayerPlaceHolder.transform.rotation);
                 if (_lastActionAxis == 0 && Input.GetAxis("Action") > 0)
                 {
                     ExitPrompt.gameObject.SetActive(false);
