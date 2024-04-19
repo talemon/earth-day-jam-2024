@@ -8,11 +8,12 @@ public class BoatController : MonoBehaviour
     // visible and editable properties
     public Transform Motor;
     public Transform DeckCamPos;
-    public float SteerPower = 500f;
-    public float Power = 5f;
-    public float MaxSpeed = 10f;
+    public float SteerPower = 50f;
+    public float Power = 0.25f;
+    public float MaxSpeed = 18f;
 
     bool lerpToDeck, lerpToSky = false;
+    bool motorOn = true;
 
     // Components
     protected Rigidbody rigidbody;
@@ -40,10 +41,13 @@ public class BoatController : MonoBehaviour
 
         int steerDirection = 0;
 
-        if (Input.GetKey(KeyCode.A))
-            steerDirection = 1;
-        if (Input.GetKey(KeyCode.D))
-            steerDirection = -1;
+        if (motorOn)
+        {
+            if (Input.GetKey(KeyCode.A))
+                steerDirection = 1;
+            if (Input.GetKey(KeyCode.D))
+                steerDirection = -1;
+        }
 
         // Make sure we can't turn the boat whithout moving
         if (localVelocity.magnitude < 0.5f)
@@ -55,11 +59,14 @@ public class BoatController : MonoBehaviour
         // get forward vector
         UnityEngine.Vector3 forward = UnityEngine.Vector3.Scale(new UnityEngine.Vector3(1, 0, 1), transform.forward);
 
-        // forward/backward acceleration
-        if (Input.GetKey(KeyCode.W))
-            rigidbody.AddForce(forward * (MaxSpeed * Power), ForceMode.Force);
-        if (Input.GetKey(KeyCode.S))
-            rigidbody.AddForce(forward * (-MaxSpeed * Power), ForceMode.Force);
+        if (motorOn)
+        {
+            // forward/backward acceleration
+            if (Input.GetKey(KeyCode.W))
+                rigidbody.AddForce(forward * (MaxSpeed * Power), ForceMode.Force);
+            if (Input.GetKey(KeyCode.S))
+                rigidbody.AddForce(forward * (-MaxSpeed * Power), ForceMode.Force);
+        }
     }
 
     // Start is called before the first frame update
@@ -74,6 +81,7 @@ public class BoatController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))   
         {
             CameraLerp();
+            motorOn = !motorOn;
         }
 
         if (lerpToDeck)

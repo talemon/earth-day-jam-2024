@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using UnityEngine;
+using UnityEngine.WSA;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,6 +27,8 @@ public class PlayerController : MonoBehaviour
     public PlayerState State = PlayerState.Default;
 
     private Rigidbody _rigidBody;
+    private bool activated = false;
+    private UnityEngine.Vector3 previousPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +39,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (State != PlayerState.Immovable)
+        previousPosition = transform.position;
+
+        if (Input.GetKeyDown(KeyCode.Space))   
+        {
+            activated = !activated;
+            _rigidBody.isKinematic = !activated;
+        }
+
+        if (State != PlayerState.Immovable && activated)
         {
             transform.RotateAround(transform.position, transform.up, Input.GetAxis("Mouse X") * RotationDeg);
 
