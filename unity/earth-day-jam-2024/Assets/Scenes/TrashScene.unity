@@ -206,6 +206,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1148027079}
+    - target: {fileID: 2183186220455153991, guid: 18731df90bd4c9846ba929a09d89e5a8, type: 3}
+      propertyPath: Model
+      value: 
+      objectReference: {fileID: 364515784}
     - target: {fileID: 2350962945538393490, guid: 18731df90bd4c9846ba929a09d89e5a8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.844
@@ -263,6 +267,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1366476051378919206, guid: 4efa31f7fc4f5804399e83910cc34db0, type: 3}
   m_PrefabInstance: {fileID: 2639003286274113865}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &364515784 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 911491407068937612, guid: 18731df90bd4c9846ba929a09d89e5a8, type: 3}
+  m_PrefabInstance: {fileID: 196440121}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &691293038 stripped
 Transform:

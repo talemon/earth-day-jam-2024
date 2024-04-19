@@ -107,7 +107,20 @@ public class InteractableProp : MonoBehaviour
 
         Debug.Log($"button size screen {buttonSizeScreen}");
         InteractionTooltip.rectTransform.sizeDelta = new Vector2(buttonSizeScreen, buttonSizeScreen);
-        InteractionTooltipText.fontSize = (int)(buttonSizeScreen / 2f);
+
+        int fontSize = (int)(buttonSizeScreen / 2f);
+
+        const int maxFontSize = 27; // if it's bigger, nothing shows
+        if (fontSize < maxFontSize)
+        {
+            InteractionTooltipText.fontSize = fontSize;
+        }
+        else
+        {
+            InteractionTooltipText.fontSize = maxFontSize;
+            float scale = (float)fontSize / (float)maxFontSize;
+            InteractionTooltipText.gameObject.transform.localScale = new Vector3(scale, scale, 1);
+        }
     }
 
     private void OnTriggerStay(Collider other)
