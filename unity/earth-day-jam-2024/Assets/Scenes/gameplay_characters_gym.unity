@@ -466,7 +466,7 @@ PrefabInstance:
     - target: {fileID: 2183186220455153991, guid: 1e0210cb34a7c6e40abeb7ebb6458585, type: 3}
       propertyPath: Model
       value: 
-      objectReference: {fileID: 854451171}
+      objectReference: {fileID: 0}
     - target: {fileID: 8164403000609951663, guid: 1e0210cb34a7c6e40abeb7ebb6458585, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 37.30005
@@ -868,11 +868,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &854451171 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5340937956447078963, guid: 02f2ce2a88a987140898ff692dea29f5, type: 3}
-  m_PrefabInstance: {fileID: 2118236581780107182}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &892667181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,6 +1427,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!95 &1450029893 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8372549885695137511, guid: 02f2ce2a88a987140898ff692dea29f5, type: 3}
+  m_PrefabInstance: {fileID: 2118236581780107182}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1618265632
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,6 +2150,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SteeringWheel
       objectReference: {fileID: 0}
+    - target: {fileID: 7448000294465274824, guid: 02f2ce2a88a987140898ff692dea29f5, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 81e7c9496347dd944a7e71b93dd92fa5, type: 3}
+    - target: {fileID: 8372549885695137511, guid: 02f2ce2a88a987140898ff692dea29f5, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8574325045083279005, guid: 02f2ce2a88a987140898ff692dea29f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2247,6 +2255,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1061476758}
+    - target: {fileID: 3381654471401380033, guid: 216b5aabf15c72c4aa61bca28810e791, type: 3}
+      propertyPath: steeringWheelAnimator
+      value: 
+      objectReference: {fileID: 1450029893}
     - target: {fileID: 4401923945172227504, guid: 216b5aabf15c72c4aa61bca28810e791, type: 3}
       propertyPath: m_Name
       value: Player
