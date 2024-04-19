@@ -27,8 +27,7 @@ public class PlayerController : MonoBehaviour
     public PlayerState State = PlayerState.Default;
 
     private Rigidbody _rigidBody;
-    private bool activated = false;
-    private UnityEngine.Vector3 previousPosition;
+    private bool activated, actionAxisPressed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -39,17 +38,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        previousPosition = transform.position;
-
-        if (Input.GetKeyDown(KeyCode.Space))   
+        if (State != PlayerState.Immovable)
         {
-            activated = !activated;
-            _rigidBody.isKinematic = !activated;
-        }
-
-        if (State != PlayerState.Immovable && activated)
-        {
-            transform.RotateAround(transform.position, transform.up, Input.GetAxis("Mouse X") * RotationDeg);
+            // Kineamtic allows us to stop the player moving while the boat is moving
+            _rigidBody.isKinematic = false;
+            transform.RotateAround(transform.position, transform.up, Input.GetAxis("Horizontal") / RotationDeg);
 
             Vector3 movementVec = transform.forward * Input.GetAxis("Vertical");
             switch (MovementMethod)
@@ -73,6 +66,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            _rigidBody.isKinematic = true;
             _rigidBody.velocity = Vector3.zero;
         }
     }

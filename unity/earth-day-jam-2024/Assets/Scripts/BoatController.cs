@@ -8,6 +8,8 @@ public class BoatController : MonoBehaviour
     // visible and editable properties
     public Transform Motor;
     public Transform DeckCamPos;
+    public Transform TopCamPos;
+    public InteractableProp SteeringWheel;
     public float SteerPower = 50f;
     public float Power = 0.25f;
     public float MaxSpeed = 18f;
@@ -17,21 +19,16 @@ public class BoatController : MonoBehaviour
 
     // Components
     protected Rigidbody rigidbody;
-    // protected UnityEngine.Quaternion startRotation;
     protected ParticleSystem particleSystem;
     protected Camera camera;
-    protected UnityEngine.Vector3 cameraStartPos;
-    protected UnityEngine.Quaternion cameraStartRot;
     protected float lerpSpeed = 0.01f; 
+    protected bool actionAxisPressed = false;
 
     public void Awake()
     {
         particleSystem = GetComponentInChildren<ParticleSystem>();
         rigidbody = GetComponent<Rigidbody>();
-        // startRotation = Motor.localRotation;
         camera = Camera.main;
-        cameraStartPos = camera.transform.position;
-        cameraStartRot = camera.transform.rotation;
     }
 
 
@@ -78,43 +75,23 @@ public class BoatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))   
+        if (SteeringWheel.State != InteractableProp.InteractableState.Occupied)
         {
-            CameraLerp();
-            motorOn = !motorOn;
-        }
-
-        if (lerpToDeck)
-        {
+            motorOn = false;
             UnityEngine.Vector3 smoothPosition = UnityEngine.Vector3.Lerp(camera.transform.position, DeckCamPos.position, lerpSpeed);
             camera.transform.position = smoothPosition;
 
             UnityEngine.Quaternion smoothRotation = UnityEngine.Quaternion.Lerp(camera.transform.rotation, DeckCamPos.rotation, lerpSpeed);
             camera.transform.rotation = smoothRotation;
         }
-        if (lerpToSky)
+        else
         {
-            UnityEngine.Vector3 smoothPosition = UnityEngine.Vector3.Lerp(camera.transform.position, cameraStartPos, lerpSpeed);
+            motorOn = true;
+            UnityEngine.Vector3 smoothPosition = UnityEngine.Vector3.Lerp(camera.transform.position, TopCamPos.position, lerpSpeed);
             camera.transform.position = smoothPosition;
 
-            UnityEngine.Quaternion smoothRotation = UnityEngine.Quaternion.Lerp(camera.transform.rotation, cameraStartRot, lerpSpeed);
+            UnityEngine.Quaternion smoothRotation = UnityEngine.Quaternion.Lerp(camera.transform.rotation, TopCamPos.rotation, lerpSpeed);
             camera.transform.rotation = smoothRotation;
         }
     }
-
-    void CameraLerp()
-    {
-        // probably need a better way of knowing which way to lerp lol
-        if (!lerpToDeck)
-        {
-            lerpToDeck = true;
-            lerpToSky = false;
-        }
-        else
-        {
-            lerpToDeck = false;
-            lerpToSky = true;
-        }
-    }
-
 }
