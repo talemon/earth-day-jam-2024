@@ -13,7 +13,7 @@ public class HookController : MonoBehaviour
     private Vector3 _initialPosition;
     private float _initialDistanceToTarget;
     private float _currentFlightTime;
-    private float _lastAdditionalHeight = 0;
+    private Vector3 _lerpPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +24,7 @@ public class HookController : MonoBehaviour
     void OnEnable()
     {
         _initialPosition = transform.position;
+        _lerpPosition = _initialPosition;
         _initialDistanceToTarget = (transform.position - Target).magnitude;
         _currentFlightTime = 0;
         InFlight = true;
@@ -32,25 +33,23 @@ public class HookController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position -= new Vector3(0, _lastAdditionalHeight, 0);
-
-        float distanceToTarget = (transform.position - Target).magnitude;
+        float distanceToTarget = (_lerpPosition - Target).magnitude;
         // hack tbh, either of them should suffice if everything works correctly
         if (distanceToTarget < 0.01 || _currentFlightTime >= FlightTime)
         {
             gameObject.SetActive(false);
             InFlight = false;
+            transform.position = _initialPosition;
             return;
         }
 
-        transform.position = Vector3.Lerp(_initialPosition, Target, _currentFlightTime / FlightTime);
+        _lerpPosition = Vector3.Lerp(_initialPosition, Target, _currentFlightTime / FlightTime);
 
         // Overengineered sin curve 
         float additionalHeight = CurveHeight * Mathf.Sin((_initialDistanceToTarget - distanceToTarget) * Mathf.PI / _initialDistanceToTarget);
-        transform.position += new Vector3(0, additionalHeight, 0);
+        transform.position = _lerpPosition + new Vector3(0, additionalHeight, 0);
 
         _currentFlightTime += Time.deltaTime;
-        _lastAdditionalHeight = additionalHeight;
     }
 
     void OnCollisionEnter(Collision collision)
