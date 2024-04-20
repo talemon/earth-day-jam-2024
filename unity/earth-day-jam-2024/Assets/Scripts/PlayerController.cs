@@ -12,7 +12,14 @@ public class PlayerController : MonoBehaviour
         DirectPositionSet
     };
 
-    public MovementMethodEnum MovementMethod;
+    public MovementMethodEnum MovementMethod = MovementMethodEnum.Physics;
+
+    public enum ControlsEnum
+    {
+        ButtonFacing,
+        Tank
+    };
+    public ControlsEnum ControlsType = ControlsEnum.ButtonFacing;
 
     public enum PlayerState
     {
@@ -33,11 +40,26 @@ public class PlayerController : MonoBehaviour
     {
         if (State != PlayerState.Immovable)
         {
-            // Kinematic allows us to stop the player moving while the boat is moving
-            _rigidBody.isKinematic = false;
-            transform.RotateAround(transform.position, transform.up, Input.GetAxis("Horizontal") / RotationDeg);
+            Vector3 movementVec = Vector3.zero;
+            if (ControlsType == ControlsEnum.Tank)
+            {
+                transform.RotateAround(transform.position, transform.up, Input.GetAxis("Horizontal") / RotationDeg);
+                movementVec = transform.forward * Input.GetAxis("Vertical");
+            }
+            else if (ControlsType == ControlsEnum.ButtonFacing)
+            {
+                Vector3 forwardVec = Input.GetAxis("Vertical") * Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1));
+                Vector3 rightVec = Input.GetAxis("Horizontal") * Vector3.Scale(Camera.main.transform.right, new Vector3(1, 0, 1));
+                movementVec = forwardVec + rightVec;
 
-            Vector3 movementVec = transform.forward * Input.GetAxis("Vertical");
+                if (movementVec != Vector3.zero)
+                {
+                    Quaternion rotation = Quaternion.LookRotation(movementVec, Vector3.up);
+                    transform.rotation = rotation;
+                }
+                movementVec.Normalize();
+            }
+
             switch (MovementMethod)
             {
                 case MovementMethodEnum.Physics:
