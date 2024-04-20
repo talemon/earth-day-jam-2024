@@ -3,6 +3,8 @@
 public class GameState
 {
     public string ShipName { get; set; }
+    public int Money { get; set; }
+    public int SmallTrashCollected { get; set; }
 }
 
 [CreateAssetMenu(fileName = "gameStateManager", menuName = "GameData/GameState Manager", order = 1)]
