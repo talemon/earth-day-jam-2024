@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
 using UnityEngine;
-using UnityEngine.WSA;
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,18 +24,16 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rigidBody;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _rigidBody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (State != PlayerState.Immovable)
         {
-            // Kineamtic allows us to stop the player moving while the boat is moving
+            // Kinematic allows us to stop the player moving while the boat is moving
             _rigidBody.isKinematic = false;
             transform.RotateAround(transform.position, transform.up, Input.GetAxis("Horizontal") / RotationDeg);
 
@@ -48,7 +42,7 @@ public class PlayerController : MonoBehaviour
             {
                 case MovementMethodEnum.Physics:
                     _rigidBody.angularVelocity = Vector3.zero;
-                    if (movementVec.magnitude < 0.1)
+                    if (movementVec.magnitude < 0.1f)
                     {
                         _rigidBody.velocity = Vector3.zero;
                     }

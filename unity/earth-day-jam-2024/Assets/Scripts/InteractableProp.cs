@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,15 +35,14 @@ public class InteractableProp : MonoBehaviour
     public PropType type;
 
     CapsuleCollider _collider;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
         _collider = Model.GetComponent<CapsuleCollider>();
         InteractionTooltip.gameObject.SetActive(false);
     }
-    
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
         switch (State)
         {
