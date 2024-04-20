@@ -32,11 +32,14 @@ public class PlayerController : MonoBehaviour
     public PlayerState State = PlayerState.Default;
 
     private Rigidbody _rigidBody;
+    private Transform _camera;
+    
     private Vector3 currMovementVec_;
 
     private void Start()
     {
         _rigidBody = GetComponent<Rigidbody>();
+        _camera = Camera.main?.transform;
     }
 
     private void Update()
@@ -51,18 +54,18 @@ public class PlayerController : MonoBehaviour
             }
             else if (ControlsType == ControlsEnum.ButtonFacing)
             {
-                Vector3 forwardVec = Input.GetAxis("Vertical") * Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1));
-                Vector3 rightVec = Input.GetAxis("Horizontal") * Vector3.Scale(Camera.main.transform.right, new Vector3(1, 0, 1));
-                movementVec = forwardVec + rightVec;
+                var cameraForward = Vector3.ProjectOnPlane(_camera.forward, Vector3.up).normalized;
+                var cameraRight = Vector3.ProjectOnPlane(_camera.right, Vector3.up).normalized;
+
+                movementVec = (cameraForward * Input.GetAxis("Vertical")) + (cameraRight * Input.GetAxis("Horizontal"));
 
                 if (movementVec != Vector3.zero)
                 {
-                    Quaternion rotation = Quaternion.LookRotation(movementVec, Vector3.up);
-                    transform.rotation = rotation;
+                    transform.rotation = Quaternion.LookRotation(movementVec, Vector3.up);
                 }
             }
 
-            if (movementVec.magnitude > 1)
+            if (movementVec.sqrMagnitude > 1f)
             {
                 // Happens when 2 buttons are pressed at the same time
                 movementVec.Normalize();
@@ -72,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
             if (MovementMethod == MovementMethodEnum.DirectPositionSet)
             {
-                transform.Translate(movementVec * TranslationSpeed * Time.deltaTime, Space.World);
+                transform.Translate(movementVec * (TranslationSpeed * Time.deltaTime), Space.World);
             }
             currMovementVec_ = movementVec;
         }
