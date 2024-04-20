@@ -4925,7 +4925,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3388
+  m_VersionIndex: 3391
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5468,6 +5468,8 @@ MonoBehaviour:
   TranslationSpeed: 0.01
   PhysicalSpeed: 6
   RotationDeg: 400
+  RotationDeg: 2.5
+  PlayerAnimScript: {fileID: 6043902564241832494}
   MovementMethod: 0
   ControlsType: 0
   State: 0

@@ -13,12 +13,16 @@ public class PlayerAnim : MonoBehaviour
 
     private void Update()
     {
-        animator.SetFloat(Speed, Math.Abs(Input.GetAxis("Vertical")));
         animator.SetFloat(TurnDirection, Input.GetAxis("Horizontal"));
         if (steeringWheelAnimator != null)
         {
             steeringWheelAnimator.SetFloat(TurnDirection, Input.GetAxis("Horizontal"));
         }
+    }
+
+    public void SetSpeed(float speed)
+    {
+        animator.SetFloat(Speed, speed);
     }
 
     public void EnterSteering()

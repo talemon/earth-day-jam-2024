@@ -100,7 +100,9 @@ MonoBehaviour:
   TranslationSpeed: 0.01
   PhysicalSpeed: 6
   RotationDeg: 7
+  PlayerAnimScript: {fileID: 3381654471401380033}
   MovementMethod: 0
+  ControlsType: 0
   State: 0
 --- !u!1001 &2696948284603379793
 PrefabInstance:
@@ -175,6 +177,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a67ea384cef8efd43a540980a03daebb, type: 3}
+--- !u!114 &3381654471401380033 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 829630993422854288, guid: a67ea384cef8efd43a540980a03daebb, type: 3}
+  m_PrefabInstance: {fileID: 2696948284603379793}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e54b3f6738e603448d88a237b8bb422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7946732193568834531 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5414746215499101106, guid: a67ea384cef8efd43a540980a03daebb, type: 3}

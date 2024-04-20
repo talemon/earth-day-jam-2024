@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
     public float PhysicalSpeed;
     public float RotationDeg;
 
+    public PlayerAnim PlayerAnimScript;
+
     public enum MovementMethodEnum
     {
         Physics,
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public PlayerState State = PlayerState.Default;
 
     private Rigidbody _rigidBody;
+    private Vector3 currMovementVec_;
 
     private void Start()
     {
@@ -57,30 +60,44 @@ public class PlayerController : MonoBehaviour
                     Quaternion rotation = Quaternion.LookRotation(movementVec, Vector3.up);
                     transform.rotation = rotation;
                 }
+            }
+
+            if (movementVec.magnitude > 1)
+            {
+                // Happens when 2 buttons are pressed at the same time
                 movementVec.Normalize();
             }
 
-            switch (MovementMethod)
+            PlayerAnimScript.SetSpeed(movementVec.magnitude);
+
+            if (MovementMethod == MovementMethodEnum.DirectPositionSet)
             {
-                case MovementMethodEnum.Physics:
-                    _rigidBody.angularVelocity = Vector3.zero;
-                    if (movementVec.magnitude < 0.1f)
-                    {
-                        _rigidBody.velocity = Vector3.zero;
-                    }
-                    else
-                    {
-                        _rigidBody.velocity = movementVec * PhysicalSpeed;
-                    }
-                    break;
-                case MovementMethodEnum.DirectPositionSet:
-                    transform.Translate(movementVec * TranslationSpeed, Space.World);
-                    break;
+                transform.Translate(movementVec * TranslationSpeed * Time.deltaTime, Space.World);
             }
+            currMovementVec_ = movementVec;
         }
-        else
+    }
+
+    private void FixedUpdate()
+    {
+        if (MovementMethod == MovementMethodEnum.Physics)
         {
-            _rigidBody.velocity = Vector3.zero;
+            if (State != PlayerState.Immovable)
+            {
+                _rigidBody.angularVelocity = Vector3.zero;
+                if (currMovementVec_.magnitude < 0.1f)
+                {
+                    _rigidBody.velocity = Vector3.zero;
+                }
+                else
+                {
+                    _rigidBody.velocity = currMovementVec_ * PhysicalSpeed;
+                }
+            }
+            else
+            {
+                _rigidBody.velocity = Vector3.zero;
+            }
         }
     }
 }
