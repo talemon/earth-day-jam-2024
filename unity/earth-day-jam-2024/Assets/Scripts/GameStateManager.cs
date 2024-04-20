@@ -8,7 +8,7 @@ public class GameState
 [CreateAssetMenu(fileName = "gameStateManager", menuName = "GameData/GameState Manager", order = 1)]
 public class GameStateManager : ScriptableObject
 {
-    private GameState _gameState;
+    private GameState _gameState = new GameState();
 
     public GameState GetGameState() => _gameState;
     

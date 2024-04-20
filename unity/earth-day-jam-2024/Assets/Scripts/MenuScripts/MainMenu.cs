@@ -82,7 +82,7 @@ namespace MenuScripts
 
         public void OnShipNameChanged(string newInput)
         {
-            startButton.enabled = !string.IsNullOrEmpty(newInput);
+            startButton.interactable = !string.IsNullOrEmpty(newInput);
         }
         
         private Sequence AnimateOut(RectTransform[] transforms)
