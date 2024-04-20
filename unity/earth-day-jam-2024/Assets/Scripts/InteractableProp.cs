@@ -55,7 +55,6 @@ public class InteractableProp : MonoBehaviour
                     _playerParent = _player.transform.parent;
                     _player.transform.SetParent(transform);
                     _player.GetComponent<PlayerController>().State = PlayerController.PlayerState.Immovable;
-                    Debug.Log("Activated!");
                     EnterEvent();
                     State = InteractableState.Occupied;
                 }
@@ -67,7 +66,6 @@ public class InteractableProp : MonoBehaviour
                     ExitPrompt.gameObject.SetActive(false);
                     _player.GetComponent<PlayerController>().State = PlayerController.PlayerState.Default;
                     _player.transform.SetParent(_playerParent);
-                    Debug.Log("Exited!");
                     ExitEvent();
                     State = InteractableState.Idle;
                 }
@@ -93,7 +91,6 @@ public class InteractableProp : MonoBehaviour
 
         Vector3 buttonSizeVec = _collider.radius * 2 * Vector3.Scale(transform.right, transform.lossyScale);
         float buttonSizeWorld = buttonSizeVec.magnitude;
-        Debug.Log($"button size world {buttonSizeWorld}");
 
         // The idea here is to project a line that's parallel to screen plane to get scale
         Vector3 buttonSizeScreenVec1 = Camera.main.WorldToScreenPoint(transform.position);
@@ -102,7 +99,6 @@ public class InteractableProp : MonoBehaviour
         const float uiScaleCoeff = 1.2f; // how big the button is compared to collider size on screen
         float buttonSizeScreen = uiScaleCoeff * (buttonSizeScreenVec1 - buttonSizeScreenVec2).magnitude;
 
-        Debug.Log($"button size screen {buttonSizeScreen}");
         InteractionTooltip.rectTransform.sizeDelta = new Vector2(buttonSizeScreen, buttonSizeScreen);
 
         int fontSize = (int)(buttonSizeScreen / 2f);

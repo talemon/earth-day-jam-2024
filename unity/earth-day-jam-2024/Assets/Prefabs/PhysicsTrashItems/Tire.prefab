@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7291021549344529851}
   m_Layer: 0
   m_Name: Tire
-  m_TagString: Untagged
+  m_TagString: BigTrash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
