@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
             Vector3 movementVec = Vector3.zero;
             if (ControlsType == ControlsEnum.Tank)
             {
-                transform.RotateAround(transform.position, transform.up, Input.GetAxis("Horizontal") / RotationDeg);
+                transform.RotateAround(transform.position, transform.up, Input.GetAxis("Horizontal") * RotationDeg  * Time.deltaTime);
                 movementVec = transform.forward * Input.GetAxis("Vertical");
             }
             else if (ControlsType == ControlsEnum.ButtonFacing)
@@ -76,7 +76,6 @@ public class PlayerController : MonoBehaviour
                 case MovementMethodEnum.DirectPositionSet:
                     transform.Translate(movementVec * TranslationSpeed, Space.World);
                     break;
-
             }
         }
         else

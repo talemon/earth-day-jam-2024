@@ -16,7 +16,7 @@ public class BoatController : MonoBehaviour
     // Components
     private Rigidbody _rigidbody;
     private Camera _camera;
-    private float _lerpSpeed = 0.01f;
+    private float _lerpSpeed = 5f;
 
     private void Awake()
     {
@@ -75,19 +75,19 @@ public class BoatController : MonoBehaviour
         if (SteeringWheel.State != InteractableProp.InteractableState.Occupied)
         {
             _motorOn = false;
-            Vector3 smoothPosition = Vector3.Lerp(_camera.transform.position, DeckCamPos.position, _lerpSpeed);
+            Vector3 smoothPosition = Vector3.Lerp(_camera.transform.position, DeckCamPos.position, _lerpSpeed * Time.deltaTime);
             _camera.transform.position = smoothPosition;
 
-            Quaternion smoothRotation = Quaternion.Lerp(_camera.transform.rotation, DeckCamPos.rotation, _lerpSpeed);
+            Quaternion smoothRotation = Quaternion.Lerp(_camera.transform.rotation, DeckCamPos.rotation, _lerpSpeed * Time.deltaTime);
             _camera.transform.rotation = smoothRotation;
         }
         else
         {
             _motorOn = true;
-            Vector3 smoothPosition = Vector3.Lerp(_camera.transform.position, TopCamPos.position, _lerpSpeed);
+            Vector3 smoothPosition = Vector3.Lerp(_camera.transform.position, TopCamPos.position, _lerpSpeed * Time.deltaTime);
             _camera.transform.position = smoothPosition;
 
-            Quaternion smoothRotation = Quaternion.Lerp(_camera.transform.rotation, TopCamPos.rotation, _lerpSpeed);
+            Quaternion smoothRotation = Quaternion.Lerp(_camera.transform.rotation, TopCamPos.rotation, _lerpSpeed * Time.deltaTime);
             _camera.transform.rotation = smoothRotation;
         }
     }
