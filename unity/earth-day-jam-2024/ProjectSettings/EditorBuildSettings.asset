@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: a7f3b2680480def42ac606299f71aa35
   - enabled: 0
@@ -13,8 +13,11 @@ EditorBuildSettings:
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 0
     path: Assets/Scenes/ShaderTest.unity
-    guid: 3046fb7b398ffbd449c1ec47bd71bea6
-  - enabled: 1
+    guid: 93f9a34701e52e3429151f34faefb0a8
+  - enabled: 0
     path: Assets/Scenes/ShaderTest.unity
     guid: 93f9a34701e52e3429151f34faefb0a8
+  - enabled: 1
+    path: Assets/Scenes/TrashScene.unity
+    guid: f31fd97ac2c58634b90f154a10a6e7dc
   m_configObjects: {}

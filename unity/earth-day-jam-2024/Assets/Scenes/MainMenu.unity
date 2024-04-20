@@ -852,11 +852,11 @@ MonoBehaviour:
   - {fileID: 1329773716}
   - {fileID: 2040624078}
   - {fileID: 1936020872}
-  shipNameInput: {fileID: 0}
+  shipNameInput: {fileID: 1329773717}
   startButton: {fileID: 2040624079}
   animationTime: 0.8
   animationInterval: 0.1
-  playScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+  playScene: {fileID: 102900000, guid: f31fd97ac2c58634b90f154a10a6e7dc, type: 3}
 --- !u!1 &888747974
 GameObject:
   m_ObjectHideFlags: 0
