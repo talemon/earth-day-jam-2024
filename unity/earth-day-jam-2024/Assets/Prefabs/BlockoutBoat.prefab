@@ -244,7 +244,7 @@ MonoBehaviour:
   InteractionTooltipText: {fileID: 2414212152592412336}
   ExitPrompt: {fileID: 6937167134139456067}
   PlayerPlaceHolder: {fileID: 5135498767755088593}
-  Model: {fileID: 0}
+  Model: {fileID: 911491407068937612}
   State: 0
   type: 0
 --- !u!136 &8964823316112294735
@@ -5469,6 +5469,7 @@ MonoBehaviour:
   PhysicalSpeed: 6
   RotationDeg: 400
   MovementMethod: 0
+  ControlsType: 0
   State: 0
 --- !u!1 &4901418504574730333
 GameObject:
