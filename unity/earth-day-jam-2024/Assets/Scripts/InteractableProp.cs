@@ -54,7 +54,7 @@ public class InteractableProp : MonoBehaviour
                     _player.transform.SetPositionAndRotation(PlayerPlaceHolder.transform.position, PlayerPlaceHolder.transform.rotation);
                     _playerParent = _player.transform.parent;
                     _player.transform.SetParent(transform);
-                    _player.GetComponent<PlayerController>().State = PlayerController.PlayerState.Immovable;
+                    _player.GetComponent<PlayerController>().enabled = false;
                     EnterEvent();
                     State = InteractableState.Occupied;
                 }
@@ -64,7 +64,7 @@ public class InteractableProp : MonoBehaviour
                 if (_lastActionAxis == 0 && Input.GetAxis("Action") > 0)
                 {
                     ExitPrompt.gameObject.SetActive(false);
-                    _player.GetComponent<PlayerController>().State = PlayerController.PlayerState.Default;
+                    _player.GetComponent<PlayerController>().enabled = true;
                     _player.transform.SetParent(_playerParent);
                     ExitEvent();
                     State = InteractableState.Idle;
