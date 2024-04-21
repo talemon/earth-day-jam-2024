@@ -67,7 +67,7 @@ namespace Environment
 
         private readonly float[] _flattenedFrustums = new float[24];
 
-        public Transform aimTarget;
+        public Transform[] aimTargets;
         private void Start()
         {
             Reset();
@@ -202,9 +202,12 @@ namespace Environment
                 prop.position = pos;
             }
 
-            Vector3 aimPos = aimTarget.position;
-            aimPos.y = SampleHeight(aimTarget.position, 0.5f);
-            aimTarget.position = aimPos;
+            foreach (Transform aimTarget in aimTargets)
+            {
+                Vector3 aimPos = aimTarget.position;
+                aimPos.y = SampleHeight(aimTarget.position, 0.5f);
+                aimTarget.position = aimPos;
+            }
         }
         
         // Update is called once per frame

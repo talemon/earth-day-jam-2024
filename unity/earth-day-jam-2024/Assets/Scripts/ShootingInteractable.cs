@@ -15,6 +15,7 @@ public class ShootingInteractable : LockingInteractable
             var playerAnim = player.GetComponentInChildren<PlayerAnim>();
             if (playerAnim != null)
             {
+                Debug.Log("Enter Aiming");
                 playerAnim.EnterAiming();
             }
         }
