@@ -33,10 +33,6 @@ namespace Environment
     
         [Range(0, 10)] 
         public float scale = 1;
-
-        [Range(-20, 20)]
-        public float heightOffset;
-
         
         [Space]
         public Transform boat;
@@ -168,7 +164,7 @@ namespace Environment
                     if (_voxelData[index].IsVisible == 1)
                     {
                         Vector3 position = _voxelData[index].Position;
-                        Vector4 result = new(position.x, position.y + heightOffset, position.z, 1);
+                        Vector4 result = new(position.x, position.y, position.z, 1);
                         _matrices[index].SetColumn(3, result);
                         finalMatrices.Add(_matrices[index]);
                     }
@@ -186,15 +182,22 @@ namespace Environment
         public float SampleHeight(Vector3 pos, float offset=0f)
         {
             int x = Mathf.RoundToInt(pos.x / _cubeSize + _xOffset);
-            int y = Mathf.RoundToInt(pos.y / _cubeSize + _yOffset);
+            int y = Mathf.RoundToInt(pos.z / _cubeSize + _yOffset);
             if (Math.Abs(x) >= density || Math.Abs(y) >= density)
             {
                 return pos.y;
             }
-            return _matrices[UVToIndex(x, y)].GetPosition().y + offset + _cubeSize/2;
+            return _voxelData[UVToIndex(x, y)].Position.y + offset + _cubeSize/2;
         }
         
         void MoveShip()
+        {
+            Vector3 boatPos = boat.position;
+            boatPos.y = Mathf.Lerp(boatPos.y, SampleHeight(boatPos, 3), .5f);
+            boat.position = boatPos;
+        }
+
+        void FloatProps()
         {
             int propIndex = 0;
             foreach (Transform prop in _props)
@@ -221,6 +224,7 @@ namespace Environment
         {
             CalcWavesGPU();
             MoveShip();
+            FloatProps();
         }
     }
 }
