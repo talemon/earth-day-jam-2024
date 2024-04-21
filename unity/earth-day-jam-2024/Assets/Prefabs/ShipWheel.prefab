@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prompt: {fileID: 7280029310915078360}
-  captainSeat: {fileID: 7349843862753485921}
-  boatController: {fileID: 0}
+  playerLockPosition: {fileID: 7349843862753485921}
   cameraController: {fileID: 0}
+  boatController: {fileID: 0}
 --- !u!1001 &3433486138352244050
 PrefabInstance:
   m_ObjectHideFlags: 0
