@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &177072527364609187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8156194976506135551}
+  m_Layer: 0
+  m_Name: DeckCam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8156194976506135551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177072527364609187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.38878757, y: -0.00022704595, z: -0.00042004, w: 0.9213273}
+  m_LocalPosition: {x: 0.4246633, y: 5.386441, z: -6.1693516}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2350962945538393490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &494267060072978089
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 494267060072978089}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.502784, y: -0.79222417, z: 0.3525324}
+  m_LocalPosition: {x: 0.14, y: -0.13, z: 0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -295,7 +326,7 @@ Transform:
   m_GameObject: {fileID: 926822728877090702}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.502784, y: -0.79222417, z: 0.3525324}
+  m_LocalPosition: {x: 0.03, y: -0.79222417, z: 0.3525324}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -435,6 +466,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1122136213728019693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2060460293889324911}
+  m_Layer: 0
+  m_Name: TopCam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2060460293889324911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122136213728019693}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.37214166, y: -0.00022348975, z: -0.00043474132, w: 0.9281758}
+  m_LocalPosition: {x: 0.44601798, y: 13.853714, z: -9.606805}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2350962945538393490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1267320375918868220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,7 +1685,7 @@ GameObject:
   - component: {fileID: 8567838603801951848}
   - component: {fileID: 6253381930307383575}
   - component: {fileID: 1663555166030307044}
-  - component: {fileID: 4949445988905654633}
+  - component: {fileID: 8797791905777221162}
   m_Layer: 9
   m_Name: BlockoutBoat
   m_TagString: Boat
@@ -1650,6 +1712,8 @@ Transform:
   - {fileID: 4286884043186121549}
   - {fileID: 4407880361559193039}
   - {fileID: 7005168870759820139}
+  - {fileID: 8156194976506135551}
+  - {fileID: 2060460293889324911}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &295332298025771992
@@ -4924,7 +4988,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3400
+  m_VersionIndex: 3391
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5040,7 +5104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStateManager: {fileID: 11400000, guid: a9871bdb4186fae4f85e3446998d18a6, type: 2}
---- !u!114 &4949445988905654633
+--- !u!114 &8797791905777221162
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5049,13 +5113,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3804448374763737467}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c94c2ee750ef486fade304c23d52b5fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f5a550bb9383f042a95a5b280323238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 1
-  dragTime: 1
-  acceleration: 1
-  rotationSpeed: 1
+  Motor: {fileID: 6457067264870860929}
+  DeckCamPos: {fileID: 8156194976506135551}
+  TopCamPos: {fileID: 2060460293889324911}
+  SteeringWheel: {fileID: 2183186220455153991}
+  SteerPower: 50
+  Power: 0.25
+  MaxSpeed: 18
 --- !u!1 &3826753414529194396
 GameObject:
   m_ObjectHideFlags: 0
@@ -5355,7 +5422,7 @@ Transform:
   m_GameObject: {fileID: 4618594312229205855}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0027842522, y: 0.1987758, z: 0.40253234}
+  m_LocalPosition: {x: -0.0027842522, y: 0.97, z: 0.40253234}
   m_LocalScale: {x: 2, y: 2, z: -2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6405,8 +6472,7 @@ MonoBehaviour:
   m_text: Ship Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7d79479cc921bb24d91a437278f914b7, type: 2}
-  m_sharedMaterial: {fileID: -125318016646460770, guid: 7d79479cc921bb24d91a437278f914b7,
-    type: 2}
+  m_sharedMaterial: {fileID: -125318016646460770, guid: 7d79479cc921bb24d91a437278f914b7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6621,7 +6687,7 @@ GameObject:
   - component: {fileID: 8100341321782441196}
   - component: {fileID: 3525113505684627918}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: BoatCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
