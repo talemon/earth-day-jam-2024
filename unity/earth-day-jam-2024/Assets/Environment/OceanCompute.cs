@@ -8,6 +8,7 @@ namespace Environment
     public struct Voxel
     {
         public Vector3 Position;
+        // ReSharper disable once UnassignedField.Global
         public int IsVisible;
     }
 
@@ -53,8 +54,7 @@ namespace Environment
         private Matrix4x4[] _outMatrices;
 
         public Transform trash;
-        private List<Transform> _props = new();
-        private List<float> _propOffsets = new();
+        private readonly List<Transform> _props = new();
         
         private int _groups;
 
@@ -65,18 +65,16 @@ namespace Environment
         private float _xOffset;
         private float _yOffset;
 
-        private float[] _flattenedFrustums = new float[24];
+        private readonly float[] _flattenedFrustums = new float[24];
 
         public Transform aimTarget;
         private void Start()
         {
             Reset();
-            float startingHeight = transform.position.y;
             for (int i = 0; i < trash.childCount; i++)
             {
                 Transform prop = trash.GetChild(i);
                 _props.Add(prop);
-                _propOffsets.Add(startingHeight - prop.transform.position.y);
             }
             _xOffset = (float)density / 2;
             _yOffset = (float)density / 10;
@@ -197,14 +195,11 @@ namespace Environment
 
         void FloatProps()
         {
-            int propIndex = 0;
             foreach (Transform prop in _props)
             {
                 Vector3 pos = prop.position;
-                pos.y = SampleHeight(pos, _propOffsets[propIndex]);
+                pos.y = SampleHeight(pos);
                 prop.position = pos;
-
-                propIndex++;
             }
 
             Vector3 aimPos = aimTarget.position;
