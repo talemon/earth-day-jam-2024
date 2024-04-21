@@ -10,6 +10,9 @@ public class PlayerAnim : MonoBehaviour
     private static readonly int TurnDirection = Animator.StringToHash("TurnDirection");
     private static readonly int EnterSteeringAnim = Animator.StringToHash("EnterSteering");
     private static readonly int ExitSteeringAnim= Animator.StringToHash("ExitSteering");
+    private static readonly int EnterInteractingTrigger = Animator.StringToHash("EnterInteracting");
+    private static readonly int ExitInteractingTrigger = Animator.StringToHash("ExitInteracting");
+    private static readonly int FireHarpoonTrigger = Animator.StringToHash("FireHarpoon");
 
     private void Update()
     {
@@ -27,10 +30,18 @@ public class PlayerAnim : MonoBehaviour
 
     public void EnterAiming()
     {
+        animator.SetTrigger(EnterInteractingTrigger);
     }
 
     public void ExitAiming()
     {
+        animator.SetTrigger(ExitInteractingTrigger);
+
+    }
+
+    public void FireHarpoon()
+    {
+        animator.SetTrigger(FireHarpoonTrigger);
     }
 
     public void EnterSteering()

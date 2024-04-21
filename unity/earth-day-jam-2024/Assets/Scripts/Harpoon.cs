@@ -14,6 +14,7 @@ public class Harpoon : MonoBehaviour
     public InteractableObject Prop;
     public GameObject Aim;
     public HookController Arrow;
+    public GameObject player;
 
     public HarpoonState State;
 
@@ -22,6 +23,7 @@ public class Harpoon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
     }
 
     // Update is called once per frame
@@ -47,6 +49,8 @@ public class Harpoon : MonoBehaviour
                 Aim.SetActive(false);
                 Arrow.StartFlying();
                 State = HarpoonState.Shooting;
+                var playerAnim = player.GetComponentInChildren<PlayerAnim>();
+                playerAnim.FireHarpoon();
             }
         }
         else if (State == HarpoonState.Shooting)
