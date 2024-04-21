@@ -67,9 +67,7 @@ namespace Environment
 
         private float[] _flattenedFrustums = new float[24];
 
-        public Transform cube;
-
-
+        public Transform aimTarget;
         private void Start()
         {
             Reset();
@@ -208,16 +206,16 @@ namespace Environment
 
                 propIndex++;
             }
+
+            Vector3 aimPos = aimTarget.position;
+            aimPos.y = SampleHeight(aimTarget.position, 0.5f);
+            aimTarget.position = aimPos;
         }
         
         // Update is called once per frame
         void Update()
         {
             Graphics.DrawMeshInstanced(cubeMesh, 0, material, _outMatrices);
-            
-            Vector3 pos = cube.position;
-            pos.y = SampleHeight(pos, 1);
-            cube.position = pos;
         }
 
         private void FixedUpdate()
