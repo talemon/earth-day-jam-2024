@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rigidBody;
     private Transform _camera;
     private Collider _collider;
+    private Rigidbody _boatRigidbody;
 
     private Vector3 currMovementVec_;
 
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         _rigidBody = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
+        _boatRigidbody = transform.parent.GetComponent<Rigidbody>();
         _camera = Camera.main?.transform;
     }
 
@@ -82,11 +84,11 @@ public class PlayerController : MonoBehaviour
             _rigidBody.angularVelocity = Vector3.zero;
             if (currMovementVec_.magnitude < 0.1f)
             {
-                _rigidBody.velocity = Vector3.zero;
+                _rigidBody.velocity = _boatRigidbody.velocity;
             }
             else
             {
-                _rigidBody.velocity = currMovementVec_ * PhysicalSpeed;
+                _rigidBody.velocity = currMovementVec_ * PhysicalSpeed + _boatRigidbody.velocity;
             }
         }
     }
