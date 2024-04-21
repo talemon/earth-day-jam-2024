@@ -1921,6 +1921,7 @@ GameObject:
   - component: {fileID: 1752895069}
   - component: {fileID: 1752895071}
   - component: {fileID: 1752895070}
+  - component: {fileID: 1752895072}
   m_Layer: 5
   m_Name: MoneyPanel
   m_TagString: Untagged
@@ -1986,6 +1987,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752895068}
   m_CullTransparentMesh: 1
+--- !u!114 &1752895072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752895068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0fa952dada9ec458de1f0c9f34ca57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameStateManager: {fileID: 11400000, guid: a9871bdb4186fae4f85e3446998d18a6, type: 2}
+  moneyText: {fileID: 1240424702}
 --- !u!1001 &1782140944
 PrefabInstance:
   m_ObjectHideFlags: 0
