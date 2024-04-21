@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -30,16 +31,20 @@ namespace MenuScripts
             buoy.DOAnchorPosX(0f, horizontalDuration).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine).SetDelay(buoyDelay);
         }
 
-        public void MoveDown(float duration)
+        private void OnDisable()
         {
-            group.DOKill();
-            group.DOAnchorPosY(_groupStartPosition.y + groupMove, duration).SetEase(Ease.OutSine);
+            DOTween.Kill(wave);
+            DOTween.Kill(buoy);
         }
 
-        public void MoveUp(float delay)
+        public Tween MoveDown(float duration)
         {
-            group.DOKill();
-            group.DOAnchorPosY(_groupStartPosition.y, moveUpTime).SetEase(Ease.OutSine).SetDelay(delay);
+            return group.DOAnchorPosY(_groupStartPosition.y + groupMove, duration).SetEase(Ease.OutSine);
+        }
+
+        public Tween MoveUp(float delay)
+        {
+            return group.DOAnchorPosY(_groupStartPosition.y, moveUpTime).SetEase(Ease.OutSine).SetDelay(delay);
         }
     }
 }

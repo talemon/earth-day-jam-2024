@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using TMPro;
 using UnityEditor;
@@ -7,6 +8,14 @@ using UnityEngine.UI;
 
 namespace MenuScripts
 {
+    public enum MainMenuState
+    {
+        Title,
+        Main,
+        Play,
+        Credits
+    }
+    
     public class MainMenu : MonoBehaviour
     {
         [SerializeField] private GameStateManager gameStateManager;
@@ -19,14 +28,18 @@ namespace MenuScripts
 
         [SerializeField] private TMP_InputField shipNameInput;
         [SerializeField] private Button startButton;
+
+        [SerializeField] private Image titleImage;
+        [SerializeField] private CanvasGroup creditsGroup;
         
         [SerializeField] private float animationTime = 1f;
         [SerializeField] private float animationInterval = 1f;
 
         [SerializeField] private SceneAsset playScene;
 
-        private bool _isMenuShowing = false;
-    
+        private MainMenuState _state = MainMenuState.Title;
+        private Sequence _currentAnimSequence;
+
         private void Start()
         {
             DOTween.Init(false, true, LogBehaviour.Default);
@@ -42,7 +55,8 @@ namespace MenuScripts
                 MoveOut(childTransform);
             }
 
-            pressAnyKey.DOFade(1f, animationTime).SetEase(Ease.OutSine).SetDelay(1f);
+            _currentAnimSequence = DOTween.Sequence();
+            _currentAnimSequence.Append(pressAnyKey.DOFade(1f, animationTime).SetEase(Ease.OutSine).SetDelay(1f));
 
             return;
 
@@ -54,39 +68,95 @@ namespace MenuScripts
             }
         }
 
+        private void SetState(MainMenuState newState)
+        {
+            if (_state == newState)
+                return;
+            
+            if(_currentAnimSequence != null && _currentAnimSequence.IsActive())
+                _currentAnimSequence.Kill(true);
+
+            _currentAnimSequence = DOTween.Sequence();
+            switch (_state)
+            {
+                case MainMenuState.Title:
+                    _currentAnimSequence.Append(titleAnimation.MoveDown(animationTime));
+                    _currentAnimSequence.Insert(0f, pressAnyKey.DOFade(0f, animationTime * 0.5f).SetEase(Ease.OutSine));
+                    break;
+                case MainMenuState.Main:
+                    _currentAnimSequence.Append(AnimateOut(mainTransforms));
+                    break;
+                case MainMenuState.Play:
+                    _currentAnimSequence.Append(AnimateOut(playMenuTransforms));
+                    break;
+                case MainMenuState.Credits:
+                    _currentAnimSequence.Append(creditsGroup.DOFade(0f, animationTime).SetEase(Ease.InOutSine));
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
+            var outAnimEnd = _currentAnimSequence.Duration();
+            
+            switch (newState)
+            {
+                case MainMenuState.Title:
+                    _currentAnimSequence.Insert(outAnimEnd, titleAnimation.MoveUp(animationTime));
+                    _currentAnimSequence.Insert(outAnimEnd, pressAnyKey.DOFade(1f, animationTime).SetEase(Ease.OutSine).SetDelay(1f));
+                    break;
+                case MainMenuState.Main:
+                    _currentAnimSequence.Insert(outAnimEnd, titleImage.DOFade(1f, animationTime).SetEase(Ease.InOutSine));
+                    _currentAnimSequence.Insert(outAnimEnd, AnimateIn(mainTransforms));
+                    break;
+                case MainMenuState.Play:
+                    _currentAnimSequence.Append(AnimateIn(playMenuTransforms));
+                    break;
+                case MainMenuState.Credits:
+                    _currentAnimSequence.Insert(outAnimEnd, titleImage.DOFade(0f, animationTime).SetEase(Ease.InOutSine));
+                    _currentAnimSequence.Insert(outAnimEnd, creditsGroup.DOFade(1f, animationTime).SetEase(Ease.InOutSine));
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
+            }
+            _state = newState;
+        }
+
         private void Update()
         {
-            if (!_isMenuShowing && Input.anyKeyDown)
+            if (_state == MainMenuState.Title && Input.anyKeyDown)
             {
-                AnimateIn(mainTransforms);
-                titleAnimation.MoveDown(animationTime);
-                
-                pressAnyKey.DOKill();
-                pressAnyKey.DOFade(0f, animationTime * 0.5f).SetEase(Ease.OutSine);
-                
-                _isMenuShowing = true;
+                SetState(MainMenuState.Main);
             }
-            else if (_isMenuShowing && Input.GetButtonDown("Cancel"))
+            else if(Input.GetButtonDown("Cancel"))
             {
-                AnimateOut(mainTransforms);
-                titleAnimation.MoveUp(animationTime);
-                
-                pressAnyKey.DOKill();
-                pressAnyKey.DOFade(1f, animationTime).SetEase(Ease.OutSine).SetDelay(1f);
-                
-                _isMenuShowing = false;
+                switch (_state)
+                {
+                    case MainMenuState.Main:
+                        SetState(MainMenuState.Title);
+                        break;
+                    case MainMenuState.Play:
+                        SetState(MainMenuState.Main);
+                        break;
+                    case MainMenuState.Credits:
+                        SetState(MainMenuState.Main);
+                        break;
+                    case MainMenuState.Title:
+                    default:
+                        return;
+                }
             }
         }
 
         public void OnPlayClicked()
         {
-            Sequence seq = DOTween.Sequence();
-            seq.Append(AnimateOut(mainTransforms));
-            seq.Append(AnimateIn(playMenuTransforms));
+            SetState(MainMenuState.Play);
         }
 
         public void OnStartClicked()
         {
+            if(_currentAnimSequence != null && _currentAnimSequence.IsActive())
+                _currentAnimSequence.Kill(true);
+            
             gameStateManager.Initialize();
             gameStateManager.GetGameState().ShipName = shipNameInput.text;
             SceneManager.LoadScene(playScene.name);
@@ -94,7 +164,7 @@ namespace MenuScripts
 
         public void OnCreditsClicked()
         {
-        
+            SetState(MainMenuState.Credits);
         }
 
         public void OnExitClicked()
@@ -104,9 +174,10 @@ namespace MenuScripts
 
         public void OnPlayBackClicked()
         {
-            Sequence seq = DOTween.Sequence();
-            seq.Append(AnimateOut(playMenuTransforms));
-            seq.Append(AnimateIn(mainTransforms));
+            SetState(MainMenuState.Main);
+            // Sequence seq = DOTween.Sequence();
+            // seq.Append(AnimateOut(playMenuTransforms));
+            // seq.Append(AnimateIn(mainTransforms));
         }
 
         public void OnShipNameChanged(string newInput)
