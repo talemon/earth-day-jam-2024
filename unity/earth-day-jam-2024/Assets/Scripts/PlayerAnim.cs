@@ -25,6 +25,14 @@ public class PlayerAnim : MonoBehaviour
         animator.SetFloat(Speed, speed);
     }
 
+    public void EnterAiming()
+    {
+    }
+
+    public void ExitAiming()
+    {
+    }
+
     public void EnterSteering()
     {
         animator.SetTrigger(EnterSteeringAnim);

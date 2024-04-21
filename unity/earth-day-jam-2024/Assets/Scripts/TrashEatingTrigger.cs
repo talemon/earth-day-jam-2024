@@ -8,11 +8,17 @@ public class TrashEatingTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Boat hit {other.gameObject.tag}");
         if (other.gameObject.tag == "SmallTrash")
         {
-            gameStateManager.GetGameState().Money += 10;
-            gameStateManager.GetGameState().SmallTrashCollected += 1;
+            var state = gameStateManager.GetGameState();
+            if (state.TrashValues.ContainsKey(other.gameObject.tag))
+            {
+                state.Money += state.TrashValues[other.gameObject.tag];
+            }
+            if (state.TrashCollected.ContainsKey(other.gameObject.tag))
+            {
+                ++state.TrashCollected[other.gameObject.tag];
+            }
             Destroy(other.gameObject);
         }
     }

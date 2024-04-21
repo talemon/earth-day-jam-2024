@@ -4,7 +4,6 @@ public enum InteractableObjectState
 {
     Available,
     Busy,
-    Locked
 }
 
 public class InteractableObject : MonoBehaviour

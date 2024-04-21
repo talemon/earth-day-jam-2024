@@ -18,8 +18,15 @@ public class TrashEater : MonoBehaviour
             // If the trash hit the boat from the front
             if (Vector3.Dot(forward, objectPosition) > 0.8f)
             {
-                gameStateManager.GetGameState().Money += 10;
-                gameStateManager.GetGameState().SmallTrashCollected += 1;
+                var state = gameStateManager.GetGameState();
+                if (state.TrashValues.ContainsKey(collision.gameObject.tag))
+                {
+                    state.Money += state.TrashValues[collision.gameObject.tag];
+                }
+                if (state.TrashCollected.ContainsKey(collision.gameObject.tag))
+                {
+                    ++state.TrashCollected[collision.gameObject.tag];
+                }
                 // Debug.Log("Boat hit small trash from front!");
                 Destroy(collision.gameObject);
             }
