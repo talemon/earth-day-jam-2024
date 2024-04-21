@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -7,23 +8,13 @@ namespace Environment
     public struct Voxel
     {
         public Vector3 Position;
-    }
-
-    public enum Method
-    {
-        CPU,
-        GPU
+        public int IsVisible;
     }
 
     public class OceanCompute : MonoBehaviour
     {
         private Voxel[] _voxelData;
         public ComputeShader computeShader;
-        
-        [SerializeField, Range(0, 10)] 
-        public int skipFrames;
-    
-        private int _counter;
     
         public Mesh cubeMesh;
         
@@ -45,8 +36,10 @@ namespace Environment
 
         [Range(-20, 20)]
         public float heightOffset;
-    
-        public Method method = Method.CPU;
+
+        
+        [Space]
+        public Transform boat;
 
         private static readonly int Voxels = Shader.PropertyToID("voxels");
     
@@ -61,22 +54,47 @@ namespace Environment
         private static readonly int Size = Shader.PropertyToID("size");
         
         private Matrix4x4[] _matrices;
+        private Matrix4x4[] _outMatrices;
+
+        public Transform trash;
+        private List<Transform> _props = new();
+        private List<float> _propOffsets = new();
         
+        private int _groups;
+
+        private float _cubeSize;
+
+        public Camera playerCamera;
+        private static readonly int Planes = Shader.PropertyToID("planes");
+        private float _xOffset;
+        private float _yOffset;
+
+        private float[] _flattenedFrustums = new float[24];
+
+        public Transform cube;
+
+
         private void Start()
         {
             Reset();
+            float startingHeight = transform.position.y;
+            for (int i = 0; i < trash.childCount; i++)
+            {
+                Transform prop = trash.GetChild(i);
+                _props.Add(prop);
+                _propOffsets.Add(startingHeight - prop.transform.position.y);
+            }
+            _xOffset = (float)density / 2;
+            _yOffset = (float)density / 10;
         }
-
-        private void OnValidate()
-        {
-            Reset();
-        }
-
+        
         void Reset()
         {
             int size = (int)Math.Pow(density, 2);
             _voxelData = new Voxel[size];
             _matrices = new Matrix4x4[_voxelData.Length];
+            _cubeSize = (float)gridSize / density;
+            Vector3 cubeScale = new(_cubeSize, _cubeSize, _cubeSize);
             for (int x = 0; x < density; x++)
             {
                 for (int y = 0; y < density; y++)
@@ -85,22 +103,35 @@ namespace Environment
                     {
                         Position = new Vector3(x, 1, y)
                     };
-                    int index = x * density + y;
+                    int index = UVToIndex(x, y);
                     _voxelData[index] = voxel;
-                    _matrices[index] = Matrix4x4.Scale(new Vector3(scale, scale, scale));
+                    _matrices[index] = Matrix4x4.Scale(cubeScale);
                 }
             }
+
+            _groups = Mathf.CeilToInt(density / 8f);
         }
-    
+        
+        float[] FlattenFrustumPlanes(float4[] frustumPlanes)
+        {
+            for (int i = 0; i < frustumPlanes.Length; i++)
+            {
+                _flattenedFrustums[i * 4] = frustumPlanes[i].x;
+                _flattenedFrustums[i * 4 + 1] = frustumPlanes[i].y;
+                _flattenedFrustums[i * 4 + 2] = frustumPlanes[i].z;
+                _flattenedFrustums[i * 4 + 3] = frustumPlanes[i].w;
+            }
+            return _flattenedFrustums;
+        }
+        
         public void CalcWavesGPU()
         {
-            const int vectorSize = sizeof(float) * 3;
+            const int vectorSize = sizeof(float) * 3 + sizeof(int);
 
             ComputeBuffer voxelBuffer = new(_voxelData.Length, vectorSize);
             voxelBuffer.SetData(_voxelData);
         
             computeShader.SetBuffer(0, Voxels, voxelBuffer);
-        
             
             computeShader.SetInt(Density, density);
             computeShader.SetFloat(Amplitude, amplitude);
@@ -111,68 +142,85 @@ namespace Environment
             computeShader.SetFloat(FixedDeltaTime, Time.fixedDeltaTime);
             computeShader.SetFloat(Size, (float)gridSize/density);
             computeShader.SetFloat(CenterOffset, density / 2f);
+
+            
+            Plane[] planes = GeometryUtility.CalculateFrustumPlanes(playerCamera);
+            float4[] frustums = new float4[6];
+            for (int i = 0; i < 6; i++)
+            {
+                frustums[i] = new float4(planes[i].normal, planes[i].distance);
+            }
+            computeShader.SetFloats(Planes, FlattenFrustumPlanes(frustums));
         
             float[] transformPosition = {transform.position.x, transform.position.y, transform.position.z};
             computeShader.SetFloats(TransformPosition, transformPosition);
-        
-            computeShader.Dispatch(0, density, density,1);
             
+            computeShader.Dispatch(0, _groups, _groups, 1);
             voxelBuffer.GetData(_voxelData);
-        
-        
+
+            List<Matrix4x4> finalMatrices = new();
+            
             for (int x = 0; x < density; x++)
             {
                 for (int y = 0; y < density; y++)
                 {
-                    int index = x * density + y;
-                    Vector3 position = _voxelData[index].Position;
-                    Vector4 result = new Vector4(position.x, position.y + heightOffset, position.z, 1);
-                    _matrices[index].SetColumn(3, result);
+                    int index = UVToIndex(x, y);
+                    if (_voxelData[index].IsVisible == 1)
+                    {
+                        Vector3 position = _voxelData[index].Position;
+                        Vector4 result = new(position.x, position.y + heightOffset, position.z, 1);
+                        _matrices[index].SetColumn(3, result);
+                        finalMatrices.Add(_matrices[index]);
+                    }
                 }
             }
             voxelBuffer.Dispose();
+            _outMatrices = finalMatrices.ToArray();
+        }
+        
+        private int UVToIndex(int u, int v)
+        {
+            return u * density + v;
         }
 
-        public void CalcWavesCPU()
+        public float SampleHeight(Vector3 pos, float offset=0f)
         {
-            for (int x = 0; x < density; x++)
+            int x = Mathf.RoundToInt(pos.x / _cubeSize + _xOffset);
+            int y = Mathf.RoundToInt(pos.y / _cubeSize + _yOffset);
+            if (Math.Abs(x) >= density || Math.Abs(y) >= density)
             {
-                for (int y = 0; y < density; y++)
-                {
-                    int index = x * density + y;
-                    float2 transformOffset = new((float)x / density + transform.position.x / 3.75f * Time.fixedDeltaTime,
-                                                 (float)y / density + transform.position.z / 3.75f * Time.fixedDeltaTime);
-                    float noise = Unity.Mathematics.noise.snoise(transformOffset * scale + Time.fixedTime * Time.fixedDeltaTime * speed);
-                    Vector3 position = _voxelData[index].Position;
-                    position.y = noise * amplitude;
-                    position.x = (x - density / 2f) * ((float)gridSize/density);
-                    position.z = (y - density / 10f) * ((float)gridSize/density);
-                    Vector4 result = new(position.x, position.y + heightOffset, position.z, 1);
-                    _matrices[index].SetColumn(3, result);
-                }
+                return pos.y;
+            }
+            return _matrices[UVToIndex(x, y)].GetPosition().y + offset + _cubeSize/2;
+        }
+        
+        void MoveShip()
+        {
+            int propIndex = 0;
+            foreach (Transform prop in _props)
+            {
+                Vector3 pos = prop.position;
+                pos.y = SampleHeight(pos, _propOffsets[propIndex]);
+                prop.position = pos;
+
+                propIndex++;
             }
         }
-
+        
         // Update is called once per frame
         void Update()
         {
-            if (_counter >= skipFrames)
-            {
-                switch (method)
-                {
-                    case Method.CPU:
-                        CalcWavesCPU();
-                        break;
-                    case Method.GPU:
-                        CalcWavesGPU();
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-                _counter = 0;
-            }
-            Graphics.DrawMeshInstanced(cubeMesh, 0, material, _matrices);
-            _counter++;
+            Graphics.DrawMeshInstanced(cubeMesh, 0, material, _outMatrices);
+            
+            Vector3 pos = cube.position;
+            pos.y = SampleHeight(pos, 1);
+            cube.position = pos;
+        }
+
+        private void FixedUpdate()
+        {
+            CalcWavesGPU();
+            MoveShip();
         }
     }
 }

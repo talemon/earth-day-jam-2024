@@ -1,9 +1,11 @@
 // Each #kernel tells which function to compile; you can have many kernels
 #pragma kernel CSMain
+#pragma 
 
 struct Voxel
 {
     float3 position;
+    int isVisible;
 };
 
 RWStructuredBuffer<Voxel> voxels;
@@ -18,6 +20,13 @@ float3 transform_position;
 int density;
 float center_offset;
 
+float4 planes[6];
+
+float _step;
+
+float2 get_uv (uint3 id) {
+    return (id.xy + 0.5) * _step - 1.0;
+}
 
 float3 mod289(float3 x) {
     return x - floor(x * (1.0 / 289.0)) * 289.0;
@@ -85,16 +94,31 @@ float snoise(float2 v) {
     return 130.0 * dot(m, g);
 }
 
-[numthreads(1, 1, 1)]
+bool is_inside_frustum(float3 position)
+{
+    bool inside_frustum = true;
+    for (uint i = 0; i < 6; ++i) {
+        const float distance = dot(planes[i], float4(position, 1.0));
+        const float radius = dot(abs(planes[i]), float4(1.0f, 1.0f, 1.0f, 0.0));
+        if (distance < -radius) {
+            inside_frustum = false;
+            break;
+        }
+    }
+    return inside_frustum;
+}
+
+[numthreads(8, 8, 1)]
 void CSMain (uint3 id : SV_DispatchThreadID)
 {
-    const float magic_speed_multiplier = 3.75f; // this value still needs to be tweaked
     const int index = id.x * density + id.y;
+    Voxel voxel = voxels[index];
+    voxel.isVisible = is_inside_frustum(voxel.position);
+    const float magic_speed_multiplier = 3.75f; // this value still needs to be tweaked
     // calculating how far we need to offset the noise to get "panning"
     const float2 transform_offset = float2((float)id.x / density + transform_position[0] / magic_speed_multiplier * fixed_delta_time,
-                                           (float)id.y / density + transform_position[2] / magic_speed_multiplier * fixed_delta_time);
+                                       (float)id.y / density + transform_position[2] / magic_speed_multiplier * fixed_delta_time);
     const float noise = snoise(transform_offset * perlin_scale + fixed_time * fixed_delta_time * speed);
-    Voxel voxel = voxels[index];
     voxel.position[1] = noise * amplitude;
     voxel.position[0] = (id.x - center_offset) * size;  // make sure the player is in the horizontal center
     voxel.position[2] = (id.y - density / 10.0f) * size;  // make sure we don't see the edge
