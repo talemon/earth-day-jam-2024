@@ -1208,7 +1208,7 @@ MonoBehaviour:
   creditsGroup: {fileID: 958478750}
   animationTime: 0.8
   animationInterval: 0.1
-  playScene: {fileID: 102900000, guid: f31fd97ac2c58634b90f154a10a6e7dc, type: 3}
+  playScene: {fileID: 102900000, guid: 3b544bb48f3eb6b4ea4e1721ebe9a3c3, type: 3}
 --- !u!114 &784658632
 MonoBehaviour:
   m_ObjectHideFlags: 0
