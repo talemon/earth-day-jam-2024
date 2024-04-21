@@ -69,6 +69,6 @@ public class InteractableObject : MonoBehaviour
 
     protected virtual void OnInteract(GameObject player)
     {
-        Debug.Log($"Interacted with {gameObject.name}");
+        // Debug.Log($"Interacted with {gameObject.name}");
     }
 }

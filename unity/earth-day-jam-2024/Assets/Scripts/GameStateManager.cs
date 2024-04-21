@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using MenuScripts;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ public class GameState
 {
     public string ShipName { get; set; }
     public int Money { get; set; }
-    public int SmallTrashCollected { get; set; }
+    public bool GameOverTrigger { get; set; }
 
     public Dictionary<string, int> TrashCollected = new()
     {
