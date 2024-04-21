@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MenuScripts;
+using UnityEngine;
 
 public class LockingInteractable : InteractableObject
 {
@@ -40,6 +41,8 @@ public class LockingInteractable : InteractableObject
         _playerParent = player.transform.parent;
         player.transform.SetParent(playerLockPosition);
         player.transform.SetPositionAndRotation(playerLockPosition.position, playerLockPosition.rotation);
+        
+        HUDManager.Instance?.ShowToolExitPrompt(true);
     }
 
     protected void ReleasePlayer(GameObject player)
@@ -51,5 +54,7 @@ public class LockingInteractable : InteractableObject
         
         var interactionComp = player.GetComponent<PlayerInteractionComponent>();
         interactionComp.State = PlayerInteractionState.Free;
+        
+        HUDManager.Instance?.ShowToolExitPrompt(false);
     }
 }
