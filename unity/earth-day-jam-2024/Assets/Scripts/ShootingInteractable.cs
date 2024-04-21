@@ -9,7 +9,7 @@ public class ShootingInteractable : LockingInteractable
     {
         if (State == InteractableObjectState.Available)
         {
-            _lastPlayerPosition = player.transform.position;
+            _lastPlayerPosition = player.transform.position - transform.position;
             cameraController.SwitchToCamera(ShootingCamera);
 
             var playerAnim = player.GetComponentInChildren<PlayerAnim>();
@@ -27,7 +27,7 @@ public class ShootingInteractable : LockingInteractable
             {
                 playerAnim.ExitAiming();
             }
-            player.transform.position = _lastPlayerPosition;
+            player.transform.position = _lastPlayerPosition + transform.position;
         }
         base.OnInteract(player);
     }
