@@ -14,6 +14,9 @@ namespace MenuScripts
         [SerializeField] private RectTransform[] mainTransforms;
         [SerializeField] private RectTransform[] playMenuTransforms;
 
+        [SerializeField] private TitleAnimation titleAnimation;
+        [SerializeField] private TMP_Text pressAnyKey;
+
         [SerializeField] private TMP_InputField shipNameInput;
         [SerializeField] private Button startButton;
         
@@ -21,6 +24,8 @@ namespace MenuScripts
         [SerializeField] private float animationInterval = 1f;
 
         [SerializeField] private SceneAsset playScene;
+
+        private bool _isMenuShowing = false;
     
         private void Start()
         {
@@ -36,8 +41,8 @@ namespace MenuScripts
             {
                 MoveOut(childTransform);
             }
-            
-            AnimateIn(mainTransforms);
+
+            pressAnyKey.DOFade(1f, animationTime).SetEase(Ease.OutSine).SetDelay(1f);
 
             return;
 
@@ -46,6 +51,30 @@ namespace MenuScripts
                 var pos = t.anchoredPosition;
                 pos.x = screenWidth;
                 t.anchoredPosition = pos;
+            }
+        }
+
+        private void Update()
+        {
+            if (!_isMenuShowing && Input.anyKeyDown)
+            {
+                AnimateIn(mainTransforms);
+                titleAnimation.MoveDown(animationTime);
+                
+                pressAnyKey.DOKill();
+                pressAnyKey.DOFade(0f, animationTime * 0.5f).SetEase(Ease.OutSine);
+                
+                _isMenuShowing = true;
+            }
+            else if (_isMenuShowing && Input.GetButtonDown("Cancel"))
+            {
+                AnimateOut(mainTransforms);
+                titleAnimation.MoveUp(animationTime);
+                
+                pressAnyKey.DOKill();
+                pressAnyKey.DOFade(1f, animationTime).SetEase(Ease.OutSine).SetDelay(1f);
+                
+                _isMenuShowing = false;
             }
         }
 
