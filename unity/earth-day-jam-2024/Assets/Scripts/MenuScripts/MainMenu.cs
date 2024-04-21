@@ -35,8 +35,6 @@ namespace MenuScripts
         [SerializeField] private float animationTime = 1f;
         [SerializeField] private float animationInterval = 1f;
 
-        [SerializeField] private SceneAsset playScene;
-
         private MainMenuState _state = MainMenuState.Title;
         private Sequence _currentAnimSequence;
 
@@ -159,7 +157,7 @@ namespace MenuScripts
             
             gameStateManager.Initialize();
             gameStateManager.GetGameState().ShipName = shipNameInput.text;
-            SceneManager.LoadScene(playScene.name);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
         public void OnCreditsClicked()
