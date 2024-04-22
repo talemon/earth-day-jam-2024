@@ -5,6 +5,8 @@ public class PlayerAnim : MonoBehaviour
 {
     public Animator animator;
     public Animator steeringWheelAnimator;
+    public AudioSource audioSource;
+    public AudioSource harpoonAudioSource;
 
     public Animator seagullAnimator;
     
@@ -17,6 +19,11 @@ public class PlayerAnim : MonoBehaviour
     private static readonly int FireHarpoonTrigger = Animator.StringToHash("FireHarpoon");
     private static readonly int EnterRecoil = Animator.StringToHash("EnterRecoil");
 
+    private void Awake()
+    {
+        steeringWheelAnimator.fireEvents = false;
+    }
+    
     private void Update()
     {
         animator.SetFloat(TurnDirection, Input.GetAxis("Horizontal"));
@@ -24,6 +31,11 @@ public class PlayerAnim : MonoBehaviour
         {
             steeringWheelAnimator.SetFloat(TurnDirection, Input.GetAxis("Horizontal"));
         }
+    }
+
+    public void Step()
+    {
+        audioSource.Play();
     }
 
     public void SetSpeed(float speed)
@@ -46,6 +58,7 @@ public class PlayerAnim : MonoBehaviour
     {
         animator.SetTrigger(FireHarpoonTrigger);
         seagullAnimator.SetTrigger(EnterRecoil);
+        harpoonAudioSource.Play();
     }
 
     public void EnterSteering()
