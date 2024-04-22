@@ -871,7 +871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4726307223404121332}
-  steeringWheelAnimator: {fileID: 2630000410111655785}
+  steeringWheelAnimator: {fileID: 6361279605660878953}
   seagullAnimator: {fileID: 1849490660647685861}
 --- !u!1 &2177913349704370348
 GameObject:
@@ -2652,6 +2652,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2717761492986754464, guid: 81526c92d43cd314f94fd2ccdcc39062, type: 3}
+      propertyPath: staticHarpoonStand
+      value: 
+      objectReference: {fileID: 217869068055307918}
     - target: {fileID: 8187084208848304826, guid: 81526c92d43cd314f94fd2ccdcc39062, type: 3}
       propertyPath: m_Name
       value: Harpoon
@@ -2692,7 +2696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7715787069774353541, guid: f9baf69025d286945943e659fa61a493, type: 3}
       propertyPath: m_LocalScale.x
-      value: 7.018384
+      value: -7.018384
       objectReference: {fileID: 0}
     - target: {fileID: 7715787069774353541, guid: f9baf69025d286945943e659fa61a493, type: 3}
       propertyPath: m_LocalScale.y
@@ -2704,7 +2708,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7715787069774353541, guid: f9baf69025d286945943e659fa61a493, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9152808118359765185, guid: f9baf69025d286945943e659fa61a493, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2785,6 +2789,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2359781, y: 1.5396458, z: 0.5099503}
   m_Center: {x: 0.019979, y: 0.76701885, z: 0.78665835}
+--- !u!95 &6361279605660878953 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 82267785446864137, guid: f9baf69025d286945943e659fa61a493, type: 3}
+  m_PrefabInstance: {fileID: 6441141444917738848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6450782124841980819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2931,7 +2940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5706050193739984951, guid: 51cf9c66a82e6014586835a482338e71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3609998
+      value: 1.348
       objectReference: {fileID: 0}
     - target: {fileID: 5706050193739984951, guid: 51cf9c66a82e6014586835a482338e71, type: 3}
       propertyPath: m_LocalPosition.z

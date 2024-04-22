@@ -500,7 +500,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243165512}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.334099, y: 0.000000030184477, z: -0.000000010699413, w: 0.942538}
+  m_LocalRotation: {x: 0.33409896, y: -0.0000000110482885, z: 0.0000000039162584, w: 0.942538}
   m_LocalPosition: {x: -4.43, y: 33.2, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -635,7 +635,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483201440}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.334099, y: 0.000000030184477, z: -0.000000010699413, w: 0.942538}
+  m_LocalRotation: {x: 0.33409896, y: -0.0000000110482885, z: 0.0000000039162584, w: 0.942538}
   m_LocalPosition: {x: -4.43, y: 33.2, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1179,11 +1179,6 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8603978023746335138, guid: 3645d89811c0c254988cbcc20381ed66, type: 3}
   m_PrefabInstance: {fileID: 1589733265835923312}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &911472961 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6361279605660878953, guid: f317aa301f27840479ba34636701dc80, type: 3}
-  m_PrefabInstance: {fileID: 7984065886653368078}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &940138921
 GameObject:
@@ -3919,22 +3914,6 @@ PrefabInstance:
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 483201445}
-    - target: {fileID: 2707888256551478065, guid: f317aa301f27840479ba34636701dc80, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.348
-      objectReference: {fileID: 0}
-    - target: {fileID: 3547169979313881032, guid: f317aa301f27840479ba34636701dc80, type: 3}
-      propertyPath: steeringWheelAnimator
-      value: 
-      objectReference: {fileID: 911472961}
-    - target: {fileID: 3634531831613614565, guid: f317aa301f27840479ba34636701dc80, type: 3}
-      propertyPath: m_LocalScale.x
-      value: -7.018384
-      objectReference: {fileID: 0}
-    - target: {fileID: 3634531831613614565, guid: f317aa301f27840479ba34636701dc80, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4700464235062864335, guid: f317aa301f27840479ba34636701dc80, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.43
