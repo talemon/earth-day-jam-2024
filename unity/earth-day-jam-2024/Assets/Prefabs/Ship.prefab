@@ -332,6 +332,9 @@ Transform:
   - {fileID: 7964353589137747185}
   - {fileID: 1518819069763229992}
   - {fileID: 2707888256551478065}
+  - {fileID: 6681854293841054831}
+  - {fileID: 625057971965393094}
+  - {fileID: 5613330328060951952}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4971833083012034905
@@ -2596,6 +2599,142 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.1132812, y: 1.7829267, z: 1}
   m_Center: {x: 0.0047593117, y: 0.39146334, z: 0}
+--- !u!1001 &200823986447469991
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4700464235062864335}
+    m_Modifications:
+    - target: {fileID: 4778070177226925519, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_Name
+      value: Seagull (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.80554
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.80554
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.80554
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.72494626
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6888055
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -87.071
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+--- !u!4 &5613330328060951952 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+  m_PrefabInstance: {fileID: 200823986447469991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1411106073531333720
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4700464235062864335}
+    m_Modifications:
+    - target: {fileID: 4778070177226925519, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_Name
+      value: Seagull
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.202
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.377
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.95011306
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.3119059
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 36.348
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+--- !u!4 &6681854293841054831 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+  m_PrefabInstance: {fileID: 1411106073531333720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1615143673032777857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2673,6 +2812,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1543646566461326863, guid: 81526c92d43cd314f94fd2ccdcc39062, type: 3}
   m_PrefabInstance: {fileID: 1615143673032777857}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5153050921062516977
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4700464235062864335}
+    m_Modifications:
+    - target: {fileID: 4778070177226925519, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_Name
+      value: Seagull (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92170376
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.38789454
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -45.647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+--- !u!4 &625057971965393094 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5706050193739984951, guid: a60689d8b85a1374aa12165df0929d8c, type: 3}
+  m_PrefabInstance: {fileID: 5153050921062516977}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6441141444917738848
 PrefabInstance:
@@ -2924,19 +3125,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4778070177226925519, guid: 51cf9c66a82e6014586835a482338e71, type: 3}
       propertyPath: m_Name
-      value: Seagull
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706050193739984951, guid: 51cf9c66a82e6014586835a482338e71, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.9475896
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706050193739984951, guid: 51cf9c66a82e6014586835a482338e71, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.9475896
-      objectReference: {fileID: 0}
-    - target: {fileID: 5706050193739984951, guid: 51cf9c66a82e6014586835a482338e71, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3.9475896
+      value: Seagull_Harpoon
       objectReference: {fileID: 0}
     - target: {fileID: 5706050193739984951, guid: 51cf9c66a82e6014586835a482338e71, type: 3}
       propertyPath: m_LocalPosition.x
