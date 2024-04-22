@@ -5,7 +5,7 @@ public class GameState
 {
     public string ShipName { get; set; }
     public int Money { get; set; } = 500;
-    public bool GameOverTrigger { get; set; }
+    public bool IsGameOver { get; set; }
 
     public Dictionary<TrashData, int> CollectedTrash { get; } = new();
     

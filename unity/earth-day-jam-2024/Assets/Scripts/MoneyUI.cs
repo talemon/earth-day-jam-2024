@@ -10,7 +10,7 @@ public class MoneyUI : MonoBehaviour
     
     private void Start()
     {
-        gameStateManager.GetGameState().GameOverTrigger = false;
+        gameStateManager.GetGameState().IsGameOver = false;
         _deductTimer = gameStateManager.moneyDecayIntervalSeconds;
     }
 
@@ -19,7 +19,7 @@ public class MoneyUI : MonoBehaviour
         var gameState = gameStateManager.GetGameState();
         moneyText.text = gameState.Money.ToString();
 
-        if (gameState.GameOverTrigger)
+        if (gameState.IsGameOver)
             return;
         
         _deductTimer -= Time.deltaTime;
@@ -29,7 +29,7 @@ public class MoneyUI : MonoBehaviour
             
             if (gameState.Money <= 0)
             {
-                gameState.GameOverTrigger = true;
+                gameState.IsGameOver = true;
                 return;
                 // Debug.Log("Business out of money!");
             }

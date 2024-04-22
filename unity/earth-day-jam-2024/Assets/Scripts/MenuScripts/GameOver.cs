@@ -32,10 +32,10 @@ namespace MenuScripts
 
         private void Update()
         {
-            if (gameStateManager.GetGameState().GameOverTrigger && !IsVisible)
+            if (gameStateManager.GetGameState().IsGameOver && !IsVisible)
             {
                 IsVisible = true;
-                gameStateManager.GetGameState().GameOverTrigger = true;
+                gameStateManager.GetGameState().IsGameOver = true;
             }
         }
 

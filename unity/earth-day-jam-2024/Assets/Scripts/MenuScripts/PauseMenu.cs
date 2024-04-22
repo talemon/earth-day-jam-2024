@@ -5,6 +5,8 @@ namespace MenuScripts
 {
     public class PauseMenu : MonoBehaviour
     {
+        [SerializeField] private GameStateManager gameStateManager;
+        
         private bool _isVisible;
 
         public bool IsVisible
@@ -28,6 +30,11 @@ namespace MenuScripts
 
         private void Update()
         {
+            if (gameStateManager.GetGameState().IsGameOver)
+            {
+                return;
+            }
+            
             if (Input.GetButtonUp("Cancel"))
             {
                 IsVisible = !IsVisible;

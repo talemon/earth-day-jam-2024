@@ -136,9 +136,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 745458865}
     m_Modifications:
+    - target: {fileID: 1960117185755452455, guid: cec88444ef93c7342bb441cbe76f4d18, type: 3}
+      propertyPath: gameStateManager
+      value: 
+      objectReference: {fileID: 11400000, guid: a9871bdb4186fae4f85e3446998d18a6, type: 2}
     - target: {fileID: 4533745152507523995, guid: cec88444ef93c7342bb441cbe76f4d18, type: 3}
       propertyPath: m_Name
-      value: ESCMenu
+      value: PauseMenu
       objectReference: {fileID: 0}
     - target: {fileID: 7101080470094813220, guid: cec88444ef93c7342bb441cbe76f4d18, type: 3}
       propertyPath: m_Pivot.x
@@ -628,7 +632,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243165512}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.334099, y: 0.000000030184477, z: -0.000000010699413, w: 0.942538}
+  m_LocalRotation: {x: 0.33409896, y: -0.0000000110482885, z: 0.0000000039162584, w: 0.942538}
   m_LocalPosition: {x: -4.43, y: 33.2, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -820,7 +824,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483201440}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.334099, y: 0.000000030184477, z: -0.000000010699413, w: 0.942538}
+  m_LocalRotation: {x: 0.33409896, y: -0.0000000110482885, z: 0.0000000039162584, w: 0.942538}
   m_LocalPosition: {x: -4.43, y: 33.2, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2393,6 +2397,14 @@ PrefabInstance:
     - target: {fileID: 7298418692986691208, guid: c2242bf8b6859cd4686d8390337c29f2, type: 3}
       propertyPath: m_Name
       value: ExitPrompt
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529034733217475425, guid: c2242bf8b6859cd4686d8390337c29f2, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529034733217475425, guid: c2242bf8b6859cd4686d8390337c29f2, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4997148
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
