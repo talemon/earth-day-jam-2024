@@ -875,7 +875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4726307223404121332}
   steeringWheelAnimator: {fileID: 6361279605660878953}
-  seagullAnimator: {fileID: 1849490660647685861}
+  seagullAnimator: {fileID: 5406944942251235441}
 --- !u!1 &2177913349704370348
 GameObject:
   m_ObjectHideFlags: 0
@@ -3172,13 +3172,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51cf9c66a82e6014586835a482338e71, type: 3}
---- !u!95 &1849490660647685861 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8291436538451369443, guid: 51cf9c66a82e6014586835a482338e71, type: 3}
-  m_PrefabInstance: {fileID: 7690930380925850374}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2707888256551478065 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5706050193739984951, guid: 51cf9c66a82e6014586835a482338e71, type: 3}
+  m_PrefabInstance: {fileID: 7690930380925850374}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5406944942251235441 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2428284254608853879, guid: 51cf9c66a82e6014586835a482338e71, type: 3}
   m_PrefabInstance: {fileID: 7690930380925850374}
   m_PrefabAsset: {fileID: 0}
