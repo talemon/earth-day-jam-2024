@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class HookAimConrols : MonoBehaviour
 {
-    public float Velocity;
+    [SerializeField] private float velocity;
+    [SerializeField] private Transform staticHarpoonStand;
 
     private Rigidbody _rigidBody;
 
@@ -15,9 +16,9 @@ public class HookAimConrols : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        Vector3 movementVec = transform.forward * Input.GetAxis("Vertical");
-        _rigidBody.velocity = new Vector3(Input.GetAxis("Horizontal") * Velocity, 0, Input.GetAxis("Vertical") * Velocity);
+        Vector3 movementVec = staticHarpoonStand.forward * Input.GetAxis("Vertical") + staticHarpoonStand.right * Input.GetAxis("Horizontal");
+        _rigidBody.velocity = movementVec.normalized * velocity;
     }
 }
