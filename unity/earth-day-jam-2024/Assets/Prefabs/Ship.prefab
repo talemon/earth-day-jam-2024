@@ -2653,6 +2653,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2717761492986754464, guid: 81526c92d43cd314f94fd2ccdcc39062, type: 3}
+      propertyPath: velocity
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717761492986754464, guid: 81526c92d43cd314f94fd2ccdcc39062, type: 3}
       propertyPath: staticHarpoonStand
       value: 
       objectReference: {fileID: 217869068055307918}
