@@ -22,8 +22,7 @@ namespace Environment
         public Material material;
     
         public int gridSize;
-    
-        [Range(1, 1000)] 
+        
         public int density;
     
         [Range(0, 20)]
