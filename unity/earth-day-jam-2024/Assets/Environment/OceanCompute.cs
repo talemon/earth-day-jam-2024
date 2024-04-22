@@ -65,6 +65,7 @@ namespace Environment
         private float _yOffset;
 
         private readonly float[] _flattenedFrustums = new float[24];
+        private readonly List<Matrix4x4> _finalMatrices = new();
 
         public Transform[] aimTargets;
         private void Start()
@@ -76,7 +77,7 @@ namespace Environment
                 _props.Add(prop);
             }
             _xOffset = (float)density / 2;
-            _yOffset = (float)density / 10;
+            _yOffset = (float)density / 2;
         }
         
         void Reset()
@@ -149,7 +150,7 @@ namespace Environment
             computeShader.Dispatch(0, _groups, _groups, 1);
             voxelBuffer.GetData(_voxelData);
 
-            List<Matrix4x4> finalMatrices = new();
+            _finalMatrices.Clear();
             
             for (int x = 0; x < density; x++)
             {
@@ -161,12 +162,12 @@ namespace Environment
                         Vector3 position = _voxelData[index].Position;
                         Vector4 result = new(position.x, position.y, position.z, 1);
                         _matrices[index].SetColumn(3, result);
-                        finalMatrices.Add(_matrices[index]);
+                        _finalMatrices.Add(_matrices[index]);
                     }
                 }
             }
             voxelBuffer.Dispose();
-            _outMatrices = finalMatrices.ToArray();
+            _outMatrices = _finalMatrices.ToArray();
         }
         
         private int UVToIndex(int u, int v)

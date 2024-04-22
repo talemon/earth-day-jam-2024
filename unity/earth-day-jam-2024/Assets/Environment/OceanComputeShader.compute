@@ -121,6 +121,6 @@ void CSMain (uint3 id : SV_DispatchThreadID)
     const float noise = snoise(transform_offset * perlin_scale + fixed_time * fixed_delta_time * speed);
     voxel.position[1] = noise * amplitude;
     voxel.position[0] = (id.x - center_offset) * size;  // make sure the player is in the horizontal center
-    voxel.position[2] = (id.y - density / 10.0f) * size;  // make sure we don't see the edge
+    voxel.position[2] = (id.y - center_offset) * size;  // make sure we don't see the edge
     voxels[index] = voxel;
 }
