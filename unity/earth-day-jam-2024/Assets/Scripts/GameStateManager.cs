@@ -6,8 +6,9 @@ public class GameStateManager : ScriptableObject
 {
     public TrashData[] trashes;
     public int startingMoney = 500;
-    public float moneyDecayInterval = 10f;
-    
+    public int moneyDecayAmount = 100;
+    public float moneyDecayIntervalSeconds = 10f;
+
     private GameState _gameState = new GameState();
 
     public GameState GetGameState() => _gameState;

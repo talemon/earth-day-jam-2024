@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93369a547d1b47b79e449a85c25e8432, type: 3}
   m_Name: gameStateManager
   m_EditorClassIdentifier: 
+  trashes:
+  - {fileID: 11400000, guid: 5352b66ee9226db4a92c0c504e7e8c8a, type: 2}
+  - {fileID: 11400000, guid: 07cb96c57c1aa614cac7b68ebdceaaa0, type: 2}
+  startingMoney: 500
+  moneyDecayAmount: 100
+  moneyDecayIntervalSeconds: 10
