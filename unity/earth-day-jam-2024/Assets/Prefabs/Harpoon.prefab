@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e03d32eee518bbc4e836a91a5ad50cca, type: 2}
+  - {fileID: -8469494145858465668, guid: 20acbfaf54e81474ca41a8dea1310560, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -270,7 +270,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e03d32eee518bbc4e836a91a5ad50cca, type: 2}
+  - {fileID: -8469494145858465668, guid: 20acbfaf54e81474ca41a8dea1310560, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1317,6 +1317,7 @@ MonoBehaviour:
   Prop: {fileID: 671876334629695116}
   Aim: {fileID: 5986909400426525913}
   Arrow: {fileID: 5247633816184170788}
+  player: {fileID: 0}
   State: 0
 --- !u!114 &671876334629695116
 MonoBehaviour:
@@ -1418,7 +1419,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e03d32eee518bbc4e836a91a5ad50cca, type: 2}
+  - {fileID: -8469494145858465668, guid: 20acbfaf54e81474ca41a8dea1310560, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
