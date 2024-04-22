@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7414571104735780132}
   m_Layer: 7
   m_Name: default
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,9 +94,10 @@ GameObject:
   - component: {fileID: 8603978023746335138}
   - component: {fileID: 4465914797220746953}
   - component: {fileID: 5614276146569690396}
+  - component: {fileID: 3081589383110124580}
   m_Layer: 7
   m_Name: WaterBottle
-  m_TagString: SmallTrash
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,3 +168,16 @@ CapsuleCollider:
   m_Height: 1.54
   m_Direction: 1
   m_Center: {x: 0, y: 0.45, z: 0}
+--- !u!114 &3081589383110124580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8947712110219668248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 592c768b8bf14811bdfa442c08baa08c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 5352b66ee9226db4a92c0c504e7e8c8a, type: 2}

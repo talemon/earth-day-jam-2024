@@ -53,7 +53,6 @@ namespace Environment
         private Matrix4x4[] _outMatrices;
 
         public Transform trash;
-        private readonly List<Transform> _props = new();
         
         private int _groups;
 
@@ -71,11 +70,6 @@ namespace Environment
         private void Start()
         {
             Reset();
-            for (int i = 0; i < trash.childCount; i++)
-            {
-                Transform prop = trash.GetChild(i);
-                _props.Add(prop);
-            }
             _xOffset = (float)density / 2;
             _yOffset = (float)density / 2;
         }
@@ -195,7 +189,7 @@ namespace Environment
 
         void FloatProps()
         {
-            foreach (Transform prop in _props)
+            foreach (Transform prop in trash)
             {
                 Vector3 pos = prop.position;
                 pos.y = SampleHeight(pos);

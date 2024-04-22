@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Gameplay;
 using UnityEngine;
 
 public class TrashEatingTrigger : MonoBehaviour
@@ -8,18 +7,14 @@ public class TrashEatingTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "SmallTrash")
+        if (other.CompareTag("Trash"))
         {
-            var state = gameStateManager.GetGameState();
-            if (state.TrashValues.ContainsKey(other.gameObject.tag))
+            var trashComp = other.GetComponent<Trash>();
+            if (trashComp != null && trashComp.data.size == TrashSize.Small)
             {
-                state.Money += state.TrashValues[other.gameObject.tag];
+                gameStateManager.GetGameState().AddTrash(trashComp.data);
+                trashComp.Disappear();
             }
-            if (state.TrashCollected.ContainsKey(other.gameObject.tag))
-            {
-                ++state.TrashCollected[other.gameObject.tag];
-            }
-            other.gameObject.SetActive(false);
         }
     }
 }
