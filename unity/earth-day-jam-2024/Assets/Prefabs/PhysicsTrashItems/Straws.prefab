@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 313318059618726339}
   m_Layer: 7
   m_Name: Straws
-  m_TagString: Untagged
+  m_TagString: SmallTrash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

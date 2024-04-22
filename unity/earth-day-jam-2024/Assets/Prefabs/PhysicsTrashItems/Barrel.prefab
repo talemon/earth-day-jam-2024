@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2905119169539246364}
   m_Layer: 7
   m_Name: Barrel
-  m_TagString: Untagged
+  m_TagString: BigTrash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

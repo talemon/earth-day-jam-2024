@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5614276146569690396}
   m_Layer: 7
   m_Name: WaterBottle
-  m_TagString: Untagged
+  m_TagString: SmallTrash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
