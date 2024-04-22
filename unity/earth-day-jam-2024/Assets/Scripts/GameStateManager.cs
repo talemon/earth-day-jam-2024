@@ -17,7 +17,7 @@ public class GameState
     public Dictionary<string, int> TrashValues = new()
     {
        { "SmallTrash", 10 },
-       { "BigTrash", 100 },
+       { "BigTrash", 200 },
     };
 }
 

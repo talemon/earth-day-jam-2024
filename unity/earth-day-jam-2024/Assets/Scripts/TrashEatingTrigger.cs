@@ -19,7 +19,7 @@ public class TrashEatingTrigger : MonoBehaviour
             {
                 ++state.TrashCollected[other.gameObject.tag];
             }
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 }

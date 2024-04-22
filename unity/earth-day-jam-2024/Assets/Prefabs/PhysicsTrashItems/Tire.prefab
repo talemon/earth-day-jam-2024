@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4139379610259198291}
   - component: {fileID: 7319956986706505844}
   - component: {fileID: 7291021549344529851}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tire
   m_TagString: BigTrash
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 3531442096277004299}
   - component: {fileID: 1861425615141443905}
   - component: {fileID: 2950040949183659477}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
