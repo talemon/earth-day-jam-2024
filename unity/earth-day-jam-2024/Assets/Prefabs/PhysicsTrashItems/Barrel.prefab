@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5250979951585444395}
   m_Layer: 7
   m_Name: default
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,9 +94,10 @@ GameObject:
   - component: {fileID: 6439473733001211565}
   - component: {fileID: 5722243002067139723}
   - component: {fileID: 2905119169539246364}
+  - component: {fileID: 7693876972057632734}
   m_Layer: 7
   m_Name: Barrel
-  m_TagString: BigTrash
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,3 +168,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &7693876972057632734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5914998253472887831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 592c768b8bf14811bdfa442c08baa08c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 07cb96c57c1aa614cac7b68ebdceaaa0, type: 2}

@@ -1,3 +1,4 @@
+﻿using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -7,8 +8,7 @@ namespace MenuScripts
     public class GameOver : MonoBehaviour
     {
         [SerializeField] private GameStateManager gameStateManager;
-        [SerializeField] private TMP_Text smallTrashText;
-        [SerializeField] private TMP_Text bigTrashText;
+        [SerializeField] private TMP_Text reportText;
         private bool _isVisible;
 
         public bool IsVisible
@@ -46,13 +46,28 @@ namespace MenuScripts
 
         private void Show(bool isVisible)
         {
-            smallTrashText.text = gameStateManager.GetGameState().TrashCollected["SmallTrash"].ToString();
-            bigTrashText.text = gameStateManager.GetGameState().TrashCollected["BigTrash"].ToString();
-
             foreach (Transform obj in transform)
             {
                 obj.gameObject.SetActive(isVisible);
             }
+
+            if (isVisible)
+            {
+                FillReport();
+            }
+        }
+
+        private void FillReport()
+        {
+            var state = gameStateManager.GetGameState();
+
+            var str = new StringBuilder();
+            foreach (var trashPair in state.CollectedTrash)
+            {
+                str.AppendLine($"{trashPair.Key.displayName}: {trashPair.Value}");
+            }
+
+            reportText.text = str.ToString();
         }
         
         public void OnMainMenuSelected()

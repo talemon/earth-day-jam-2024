@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Gameplay;
 using UnityEngine;
 
 public class ClawController : MonoBehaviour
@@ -12,14 +13,7 @@ public class ClawController : MonoBehaviour
     [SerializeField] private Transform[] RopeSections;
     [SerializeField] private GameStateManager gameStateManager;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (!IsMoving)
             return;
@@ -43,7 +37,7 @@ public class ClawController : MonoBehaviour
             Reset();
     }
 
-    void Reset()
+    private void Reset()
     {
         IsMoving = false;
         transform.position = InitialClawPos.position;
@@ -55,18 +49,14 @@ public class ClawController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Garbage"))
+        if (other.CompareTag("Trash"))
         {
-            var state = gameStateManager.GetGameState();
-            if (state.TrashValues.ContainsKey(other.gameObject.tag))
+            var trashComp = other.GetComponent<Trash>();
+            if (trashComp != null)
             {
-                state.Money += state.TrashValues[other.gameObject.tag];
+                gameStateManager.GetGameState().AddTrash(trashComp.data);
+                trashComp.Disappear();
             }
-            if (state.TrashCollected.ContainsKey(other.gameObject.tag))
-            {
-                ++state.TrashCollected[other.gameObject.tag];
-            }
-            other.gameObject.SetActive(false);
         }
     }
 }

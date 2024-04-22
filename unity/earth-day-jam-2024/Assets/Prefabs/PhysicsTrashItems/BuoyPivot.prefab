@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3147456009325494602}
+  - component: {fileID: 703428244055177799}
   m_Layer: 7
   m_Name: BuoyPivot
-  m_TagString: BigTrash
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +33,19 @@ Transform:
   - {fileID: 6827716413782361204}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &703428244055177799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5447768461067641979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 592c768b8bf14811bdfa442c08baa08c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 07cb96c57c1aa614cac7b68ebdceaaa0, type: 2}
 --- !u!1001 &6434045839838503839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87,6 +101,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a37e821e4d529384082307839e439729, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a37e821e4d529384082307839e439729, type: 3}
+      propertyPath: m_TagString
+      value: Trash
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: a37e821e4d529384082307839e439729, type: 3}
       propertyPath: m_Layer
