@@ -248,6 +248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 56932281}
   - component: {fileID: 56932283}
+  - component: {fileID: 56932284}
   m_Layer: 0
   m_Name: FrustumCam
   m_TagString: Untagged
@@ -277,10 +278,10 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 56932280}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -302,8 +303,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 200
-  field of view: 75
+  far clip plane: 350
+  field of view: 47.3
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -321,6 +322,50 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &56932284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56932280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1001 &154658017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -336,10 +381,6 @@ PrefabInstance:
     - target: {fileID: 3619160713367309289, guid: 873e2d3d1363c8f4ebfba7c1d265cad0, type: 3}
       propertyPath: m_Layer
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4139379610259198291, guid: 873e2d3d1363c8f4ebfba7c1d265cad0, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5138599
       objectReference: {fileID: 0}
     - target: {fileID: 4139379610259198291, guid: 873e2d3d1363c8f4ebfba7c1d265cad0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -464,7 +505,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243165512}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.334099, y: 0.00000003018448, z: -0.000000010699415, w: 0.942538}
+  m_LocalRotation: {x: 0.334099, y: 0.000000030184477, z: -0.000000010699413, w: 0.942538}
   m_LocalPosition: {x: -4.43, y: 33.2, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -599,7 +640,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483201440}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.334099, y: 0.00000003018448, z: -0.000000010699415, w: 0.942538}
+  m_LocalRotation: {x: 0.334099, y: 0.000000030184477, z: -0.000000010699413, w: 0.942538}
   m_LocalPosition: {x: -4.43, y: 33.2, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1399,10 +1440,6 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6439473733001211565, guid: 4f6ed5dbb33fa27439d47ae280766c68, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.39896002
-      objectReference: {fileID: 0}
-    - target: {fileID: 6439473733001211565, guid: 4f6ed5dbb33fa27439d47ae280766c68, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.4599476
       objectReference: {fileID: 0}
@@ -1909,10 +1946,6 @@ PrefabInstance:
     - target: {fileID: 3619160713367309289, guid: 873e2d3d1363c8f4ebfba7c1d265cad0, type: 3}
       propertyPath: m_Layer
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4139379610259198291, guid: 873e2d3d1363c8f4ebfba7c1d265cad0, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5138599
       objectReference: {fileID: 0}
     - target: {fileID: 4139379610259198291, guid: 873e2d3d1363c8f4ebfba7c1d265cad0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2564,6 +2597,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3566809815213617725, guid: feacfefae66205e49b63a4363de2233f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cf7b0baf0b7fdae49ad46728ae0438ad, type: 2}
     - target: {fileID: 5447768461067641979, guid: feacfefae66205e49b63a4363de2233f, type: 3}
       propertyPath: m_Name
       value: BuoyPivot
@@ -3120,14 +3157,6 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8603978023746335138, guid: 3645d89811c0c254988cbcc20381ed66, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.22625539
-      objectReference: {fileID: 0}
-    - target: {fileID: 8603978023746335138, guid: 3645d89811c0c254988cbcc20381ed66, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.22625539
-      objectReference: {fileID: 0}
-    - target: {fileID: 8603978023746335138, guid: 3645d89811c0c254988cbcc20381ed66, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.8025875
       objectReference: {fileID: 0}
@@ -3509,7 +3538,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071070558}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.36840406, y: -0.03863041, z: 0.015323616, w: 0.92873645}
+  m_LocalRotation: {x: 0.36840403, y: -0.038630366, z: 0.015323597, w: 0.92873645}
   m_LocalPosition: {x: 1.6260004, y: 15.203, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

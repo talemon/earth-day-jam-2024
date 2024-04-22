@@ -25,12 +25,14 @@ public class TrashGenerator : MonoBehaviour
         var positions = Gists.FastPoissonDiskSampling.Sampling(BottomLeft, TopRight, minDistance);
         foreach (var trashPos in positions)
         {
-            CreateTrash(prefabs[Random.Range(0, prefabs.Count() - 1)], trashPos);
+            int trashIndex = Random.Range(0, prefabs.Length - 1);
+            CreateTrash(prefabs[trashIndex], trashPos, trashIndex == 1);
         }
     }
 
-    void CreateTrash(GameObject trashPrefab, Vector2 pos)
+    void CreateTrash(GameObject trashPrefab, Vector2 pos, bool fixedRotation=false)
     {
-        Instantiate(trashPrefab, new Vector3(pos.x, DefaultHeight, pos.y), Random.rotation, transform);
+        Quaternion rotation = fixedRotation ? Quaternion.identity : Random.rotation;
+        Instantiate(trashPrefab, new Vector3(pos.x, DefaultHeight, pos.y), rotation, transform);
     }
 }

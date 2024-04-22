@@ -2649,10 +2649,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5247633816184170788, guid: 81526c92d43cd314f94fd2ccdcc39062, type: 3}
-      propertyPath: Speed
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 8187084208848304826, guid: 81526c92d43cd314f94fd2ccdcc39062, type: 3}
       propertyPath: m_Name
       value: Harpoon
