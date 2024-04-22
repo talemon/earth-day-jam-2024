@@ -5,6 +5,8 @@ public class PlayerAnim : MonoBehaviour
 {
     public Animator animator;
     public Animator steeringWheelAnimator;
+
+    public Animator seagullAnimator;
     
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int TurnDirection = Animator.StringToHash("TurnDirection");
@@ -13,6 +15,7 @@ public class PlayerAnim : MonoBehaviour
     private static readonly int EnterInteractingTrigger = Animator.StringToHash("EnterInteracting");
     private static readonly int ExitInteractingTrigger = Animator.StringToHash("ExitInteracting");
     private static readonly int FireHarpoonTrigger = Animator.StringToHash("FireHarpoon");
+    private static readonly int EnterRecoil = Animator.StringToHash("EnterRecoil");
 
     private void Update()
     {
@@ -42,6 +45,7 @@ public class PlayerAnim : MonoBehaviour
     public void FireHarpoon()
     {
         animator.SetTrigger(FireHarpoonTrigger);
+        seagullAnimator.SetTrigger(EnterRecoil);
     }
 
     public void EnterSteering()
