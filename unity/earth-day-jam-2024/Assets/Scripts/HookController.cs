@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Gameplay;
 using UnityEngine;
 
@@ -13,13 +11,13 @@ public class HookController : MonoBehaviour
 
     [SerializeField] private GameStateManager gameStateManager;
     [SerializeField] private Transform arrowHolder;
+    
     private float _initialDistanceToTarget;
     private float _currentFlightTime;
     private float _targetFlightTime;
     private Vector3 _lerpPosition;
     private Transform _arrowParent;
 
-    // Start is called before the first frame update
     public void StartFlying()
     {
         transform.SetPositionAndRotation(arrowHolder.position, arrowHolder.rotation);
@@ -32,8 +30,7 @@ public class HookController : MonoBehaviour
         InFlight = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (!InFlight)
             return;

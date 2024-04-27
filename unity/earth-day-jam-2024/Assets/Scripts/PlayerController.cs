@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     private Collider _collider;
     private Rigidbody _boatRigidbody;
 
-    private Vector3 currMovementVec_;
+    private Vector3 _currMovementVec;
 
     private void Awake()
     {
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
             transform.Translate(movementVec * (TranslationSpeed * Time.deltaTime), Space.World);
         }
 
-        currMovementVec_ = movementVec;
+        _currMovementVec = movementVec;
     }
 
     private void FixedUpdate()
@@ -82,13 +82,13 @@ public class PlayerController : MonoBehaviour
         if (MovementMethod == MovementMethodEnum.Physics)
         {
             _rigidBody.angularVelocity = Vector3.zero;
-            if (currMovementVec_.magnitude < 0.1f)
+            if (_currMovementVec.magnitude < 0.1f)
             {
                 _rigidBody.velocity = _boatRigidbody.velocity;
             }
             else
             {
-                _rigidBody.velocity = currMovementVec_ * PhysicalSpeed + _boatRigidbody.velocity;
+                _rigidBody.velocity = _currMovementVec * PhysicalSpeed + _boatRigidbody.velocity;
             }
         }
     }

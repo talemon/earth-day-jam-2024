@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum HarpoonState
@@ -20,14 +18,7 @@ public class Harpoon : MonoBehaviour
 
     private int _lastShootAxis;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (State != HarpoonState.Disabled && Prop.State != InteractableObjectState.Busy)
         {

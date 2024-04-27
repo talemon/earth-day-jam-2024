@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class TrashGenerator : MonoBehaviour
@@ -14,13 +11,13 @@ public class TrashGenerator : MonoBehaviour
     [SerializeField] private float MinimumSmallTrashDistance;
     [SerializeField] private float DefaultHeight;
 
-    void Awake()
+    private void Awake()
     {
         CreateTrash(MinimumBigTrashDistance, BigTrashPrefabs);
         CreateTrash(MinimumSmallTrashDistance, SmallTrashPrefabs);
     }
 
-    void CreateTrash(float minDistance, GameObject[] prefabs)
+    private void CreateTrash(float minDistance, GameObject[] prefabs)
     {
         var positions = Gists.FastPoissonDiskSampling.Sampling(BottomLeft, TopRight, minDistance);
         foreach (var trashPos in positions)
@@ -30,9 +27,9 @@ public class TrashGenerator : MonoBehaviour
         }
     }
 
-    void CreateTrash(GameObject trashPrefab, Vector2 pos, bool fixedRotation=false)
+    private void CreateTrash(GameObject trashPrefab, Vector2 pos, bool fixedRotation=false)
     {
-        Quaternion rotation = fixedRotation ? Quaternion.identity : Random.rotation;
+        var rotation = fixedRotation ? Quaternion.identity : Random.rotation;
         Instantiate(trashPrefab, new Vector3(pos.x, DefaultHeight, pos.y), rotation, transform);
     }
 }

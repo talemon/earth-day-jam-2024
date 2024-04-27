@@ -13,53 +13,42 @@ public enum EGameplayCamera
 
 public class GameplayCameraController : MonoBehaviour
 {
+    [SerializeField] private CinemachineVirtualCamera startingCamera;
     [SerializeField] private CinemachineVirtualCamera playerCamera;
     [SerializeField] private CinemachineVirtualCamera boatCamera;
     [SerializeField] private CinemachineVirtualCamera clawCamera;
     [SerializeField] private CinemachineVirtualCamera harpoonCamera;
+    
     public VolumeProfile profile;
+    
     private DepthOfField _depthOfField;
+    
     private void Start()
     {
         profile.TryGet(out _depthOfField);
         SwitchToCamera(EGameplayCamera.Player);
+        
+        playerCamera.MoveToTopOfPrioritySubqueue();
+        startingCamera.enabled = false;
     }
 
     public void SwitchToCamera(EGameplayCamera cameraSelection)
     {
+        _depthOfField.active = cameraSelection == EGameplayCamera.Player;
+        
         switch (cameraSelection)
         {
             case EGameplayCamera.Player:
-                // _depthOfField.mode = new DepthOfFieldModeParameter(DepthOfFieldMode.Bokeh);
-                _depthOfField.active = true;
-                playerCamera.Priority = 10;
-                boatCamera.Priority = 1;
-                clawCamera.Priority = 1;
-                harpoonCamera.Priority = 1;
+                playerCamera.MoveToTopOfPrioritySubqueue();
                 break;
             case EGameplayCamera.Boat:
-                // _depthOfField.mode = new DepthOfFieldModeParameter(DepthOfFieldMode.Off);
-                _depthOfField.active = false;
-                playerCamera.Priority = 1;
-                boatCamera.Priority = 10;
-                clawCamera.Priority = 1;
-                harpoonCamera.Priority = 1;
+                boatCamera.MoveToTopOfPrioritySubqueue();
                 break;
             case EGameplayCamera.Claw:
-                // _depthOfField.mode = new DepthOfFieldModeParameter(DepthOfFieldMode.Off);
-                _depthOfField.active = false;
-                playerCamera.Priority = 1;
-                boatCamera.Priority = 1;
-                clawCamera.Priority = 10;
-                harpoonCamera.Priority = 1;
+                clawCamera.MoveToTopOfPrioritySubqueue();
                 break;
             case EGameplayCamera.Harpoon:
-                // _depthOfField.mode = new DepthOfFieldModeParameter(DepthOfFieldMode.Off);
-                _depthOfField.active = false;
-                playerCamera.Priority = 1;
-                boatCamera.Priority = 1;
-                clawCamera.Priority = 1;
-                harpoonCamera.Priority = 10;
+                harpoonCamera.MoveToTopOfPrioritySubqueue();
                 break;
             default:
                 Debug.LogError("Invalid camera selection");

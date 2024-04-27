@@ -27,14 +27,7 @@ public class CraneController : MonoBehaviour
     
     [SerializeField] private ClawController Claw;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (State != CraneState.Disabled && Interactable.State != InteractableObjectState.Busy)
         {
@@ -71,7 +64,7 @@ public class CraneController : MonoBehaviour
         }
     }
 
-    void ExtendBoon()
+    private void ExtendBoon()
     {
         float axis = Input.GetAxis("Vertical");
         float distance = (StaticBoon.position - MovingBoon.position).magnitude;
@@ -82,7 +75,7 @@ public class CraneController : MonoBehaviour
         }
     }
 
-    void RotateCrane()
+    private void RotateCrane()
     {
         float dot = Vector3.Dot(StaticParent.right, transform.forward);
         float axis = Input.GetAxis("Horizontal");
